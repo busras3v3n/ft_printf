@@ -6,7 +6,7 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:05:41 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/05 11:49:15 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:02:15 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,23 @@
 static int ft_handleformat(int i, const char *s, va_list *args)
 {
     int c;
-    c = i+1;
     int count;
-    count = 0;
 
-    if(s[c] == 'c')
-        count += ft_case_char(va_args(*arg, char));
-    else if(s[c] == 's')
-    else if(s[c] == 'p')
-    else if(s[c] == 'd')
-    else if(s[c] == 'i')
-    else if(s[c] == 'u')
-    else if(s[c] == 'x')
-    else if(s[c] == 'X')
-    else if(s[c] == '%')
-    return(count);
+    c = i+1;
+    count = 0;
+    if (s[c] == 'c' || s[c] == '%')
+        count += ft_print_char(va_args(*args, char));
+    else if (s[c] == 's')
+        count += ft_print_str(va_args(*args, char *));
+    else if (s[c] == 'p')
+        count += ft_print_void(va_args(*args, void *));
+    else if( s[c] == 'd' || s[c] == 'i')
+        count += ft_print_nbr(va_args(*args, int));
+    else if (s[c] == 'u')
+        count += ft_print_uint(va_args(*args, int));
+    else if (s[c] == 'x' || s[c] == 'X')
+        count += ft_print_hex(va_args(*args, int));
+    return (count);
 }
 
 int ft_printf(const char *s, ...)
@@ -43,9 +45,9 @@ int ft_printf(const char *s, ...)
 
     i = 0;
     count = 0;
-    while(s[i])
+    while (s[i])
     {
-        if(s[i] == '%')
+        if (s[i] == '%')
             count += ft_handleformat(s, i, args);
         else
         {
