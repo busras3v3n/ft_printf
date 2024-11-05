@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+         #
+#    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/11 15:03:07 by busseven          #+#    #+#              #
-#    Updated: 2024/11/02 17:03:46 by busseven         ###   ########.fr        #
+#    Updated: 2024/10/27 18:37:06 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS:.c=.o)
 
 %.o:%.c
-	cc -c -Wall -Wextra -Werror $< -o $@
+	gcc -c -Wall -Wextra -Werror $< -o $@
 
 $(NAME) : $(OBJS)
 	ar -rcs $(NAME) $(OBJS)

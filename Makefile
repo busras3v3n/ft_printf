@@ -5,37 +5,38 @@
 #                                                     +:+ +:+         +:+      #
 #    By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/11 15:03:07 by busseven          #+#    #+#              #
-#    Updated: 2024/11/02 17:03:37 by busseven         ###   ########.fr        #
+#    Created: 2024/11/05 10:55:22 by busseven          #+#    #+#              #
+#    Updated: 2024/11/05 11:03:59 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+SRC 		= ft_printf.c printf_char.c printf_string.c printf_ptr.c \
+				printf_nbr.c printf_hex.c printf_uint.c
+OBJS 		= $(SRC:.c=.o)
 
-LIBFT = ./libft/libft.a
+NAME 		= libftprintf.a
+LIBFT 		= ./libft/libft.a
 
-SRCS = ft_printf.c ft_case_char.c
+all: $(LIBFT) $(NAME)
 
-OBJS = $(SRCS:.c=.o)
-
-%.o:%.c
-	cc -c -Wall -Wextra -Werror $< -o $@
-
-$(NAME) : $(OBJS) $(LIBFT)
-
+$(NAME): $(OBJS)
+	cp libft/libft.a $(NAME)
 	ar -rcs $(NAME) $(OBJS)
 
 $(LIBFT):
-	$(MAKE) -C libft
+	make -C $(LIB_PATH) all 
 
-all: $(NAME)
+%.o: %.c
+	cc -c -Wall -Wextra -Werror $< -o $@ 
+
+fclean: clean
+	make -C ./libft fclean
+	rm -rf $(NAME)	
 
 clean:
 	rm -f $(OBJS)
+	make -C ./libft clean
 
-fclean: clean
-	rm -f $(NAME)
-	
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
