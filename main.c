@@ -1,8 +1,10 @@
 #include "./libft/libft.h"
-#include "a.h"
+#include "libftprintf.h"
 #include <unistd.h>
 
 int main()
 {
-    ft_printf("a");
+    int a = 199;
+    char *b = "busra";
+    ft_printf("%i bundan sonra bir string %s", a, b);
 }
