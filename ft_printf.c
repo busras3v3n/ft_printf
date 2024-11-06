@@ -6,7 +6,7 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:05:41 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/06 11:16:32 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/06 12:51:44 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	ft_check(const char *s)
 	{
 		if (s[i] == '%')
 		{
-			if (!ft_strchr("csiduxX%", s[i + 1]))
+			if (!ft_strchr("csiduxX%", s[i + 1]) || s[i + 1] == '\0')
 				return (1);
 		}
 		i++;
