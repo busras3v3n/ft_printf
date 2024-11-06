@@ -6,7 +6,7 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:05:41 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/06 12:51:44 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/06 16:07:18 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static int	ft_handleformat(int i, const char *s, va_list *args)
 		count += ft_print_nbr(va_arg(*args, unsigned int));
 	else if (s[c] == 'x' || s[c] == 'X')
 		count += ft_print_hex(va_arg(*args, int), s[c]);
+		else if (s[c] == 'p')
+		count += ft_print_ptr(va_arg(*args, void *));
 	return (count);
 }
 
@@ -44,7 +46,7 @@ static int	ft_check(const char *s)
 	{
 		if (s[i] == '%')
 		{
-			if (!ft_strchr("csiduxX%", s[i + 1]) || s[i + 1] == '\0')
+			if (!ft_strchr("csiduxXp%", s[i + 1]) || s[i + 1] == '\0')
 				return (1);
 		}
 		i++;
