@@ -6,14 +6,14 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:12:14 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/05 12:27:58 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:06:57 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 
-int ft_print_char(char c)
+int	ft_print_char(char c)
 {
-    ft_putchar_fd(c, 1);
-    return(1);
+	ft_putchar_fd(c, 1);
+	return (1);
 }

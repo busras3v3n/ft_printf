@@ -6,14 +6,14 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:42:07 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/05 12:50:39 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:18:18 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
 
-int ft_print_nbr(int i)
+int	ft_print_nbr(int i)
 {
-    ft_putnbr_fd(i, 1);
-    return(ft_strlen(ft_itoa(i)));
+	ft_putnbr_fd(i, 1);
+	return (ft_strlen(ft_itoa(i)));
 }
