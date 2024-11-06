@@ -7,5 +7,5 @@ int main()
 {
     int a = 199;
     char *b = "busra";
-    printf("%p", &a);
+    printf("%    d", a);
 }

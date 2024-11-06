@@ -6,13 +6,15 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 09:41:52 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/06 10:00:57 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/06 10:14:20 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static void ft_putnbr_hex_fd(int n, int fd)
+#include <unistd.h>
+
+static int  ft_putnbr_hex_fd(int n, int fd)
 {
-    char    *base
+    char    *base;
     int     count;
 
     base = "0123456789abcdef";
@@ -37,9 +39,9 @@ static void ft_putnbr_hex_fd(int n, int fd)
 	}
     return (count);
 }
-static void ft_putnbr_hex_upcase_fd(int n, int fd)
+static int  ft_putnbr_hex_upcase_fd(int n, int fd)
 {
-    char    *base
+    char    *base;
     int     count;
 
     base = "0123456789ABCDEF";
@@ -71,4 +73,6 @@ int ft_print_hex(int i, char s)
         return(ft_putnbr_hex_fd(i, 1));
     if(s == 'X')
         return(ft_putnbr_hex_upcase_fd(i, 1));
+    else
+        return(0);
 }

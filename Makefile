@@ -6,11 +6,11 @@
 #    By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 10:55:22 by busseven          #+#    #+#              #
-#    Updated: 2024/11/05 12:46:24 by busseven         ###   ########.fr        #
+#    Updated: 2024/11/06 10:11:20 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC 		= ft_printf.c ft_print_char.c ft_print_str.c ft_print_nbr.c
+SRC 		= ft_printf.c ft_print_char.c ft_print_str.c ft_print_nbr.c ft_print_hex.c
 OBJS 		= $(SRC:.c=.o)
 
 NAME 		= libftprintf.a
