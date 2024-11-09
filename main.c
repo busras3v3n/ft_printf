@@ -4,6 +4,6 @@
 
 int main()
 {
-	char *s = "busra";
-	printf("%p", 0);
+	char *s = NULL;
+	ft_printf("%s", s);
 }

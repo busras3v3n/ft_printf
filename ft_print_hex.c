@@ -6,7 +6,7 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 09:41:52 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/06 12:54:23 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/09 14:19:34 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static int	ft_putnbr_hex_fd(int n, int fd)
 		count++;
 		count += ft_putnbr_hex_fd(-n, fd);
 	}
-	else if (n > 16)
+	else if (n >= 16)
 	{
 		count += ft_putnbr_hex_fd(n / 16, fd);
 		count += ft_putnbr_hex_fd(n % 16, fd);
 	}
-	else if (n >= 0 && n <= 16)
+	else if (n >= 0 && n < 16)
 	{
 		write(fd, &base[n], 1);
 		count++;
@@ -55,12 +55,12 @@ static int	ft_putnbr_hex_upcase_fd(int n, int fd)
 		count++;
 		count += ft_putnbr_hex_upcase_fd(-n, fd);
 	}
-	else if (n > 16)
+	else if (n >= 16)
 	{
 		count += ft_putnbr_hex_upcase_fd(n / 16, fd);
 		count += ft_putnbr_hex_upcase_fd(n % 16, fd);
 	}
-	else if (n >= 0 && n <= 16)
+	else if (n >= 0 && n < 16)
 	{
 		write(fd, &base[n], 1);
 		count++;

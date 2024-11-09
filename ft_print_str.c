@@ -6,7 +6,7 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:13:32 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/06 11:16:50 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/09 14:25:13 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 int	ft_print_str(char *s)
 {
+	if(s == NULL)
+	{
+		ft_putstr_fd("(null)", 1);
+		return(6);
+	}
 	ft_putstr_fd(s, 1);
 	return (ft_strlen(s));
 }
