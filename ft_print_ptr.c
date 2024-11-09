@@ -6,7 +6,7 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 13:01:23 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/09 17:14:27 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:21:50 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	ft_print_hex_ptr(unsigned long long n, int fd)
 	}
 	return (count);
 }
+
 int	ft_print_ptr(void *p)
 {
 	if (p == 0)
@@ -40,5 +41,5 @@ int	ft_print_ptr(void *p)
 		return (5);
 	}
 	ft_print_str("0x");
-	return(ft_print_hex_ptr((unsigned long long) p, 1) + 2);
+	return (ft_print_hex_ptr((unsigned long long) p, 1) + 2);
 }

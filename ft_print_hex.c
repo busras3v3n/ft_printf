@@ -6,7 +6,7 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 09:41:52 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/09 17:14:38 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:19:14 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	ft_putnbr_hex_fd(unsigned int n, int fd)
 
 	base = "0123456789abcdef";
 	count = 0;
-
 	if (n >= 16)
 	{
 		count += ft_putnbr_hex_fd(n / 16, fd);

@@ -6,7 +6,7 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 13:55:12 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/09 17:14:20 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:22:03 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	ft_print_unbr(unsigned int n, int fd)
 		write(fd, &c, 1);
 		ret++;
 	}
-	return(ret);
+	return (ret);
 }

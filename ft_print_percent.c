@@ -6,15 +6,14 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:52:20 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/09 17:14:30 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:22:19 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int ft_print_percent(void)
+int	ft_print_percent(void)
 {
 	write(1, "%", 1);
 	return (1);
 }
-

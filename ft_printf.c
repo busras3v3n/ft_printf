@@ -6,7 +6,7 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:05:41 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/09 17:14:17 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:20:53 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_handleformat(int i, const char *s, va_list *args)
 
 	c = i + 1;
 	count = 0;
-	if(s[c] == '%')
+	if (s[c] == '%')
 		count += ft_print_percent();
 	else if (s[c] == 'c')
 		count += ft_print_char(va_arg(*args, int));
@@ -52,7 +52,7 @@ int	ft_printf(const char *s, ...)
 		if (s[i] == '%')
 		{
 			count += ft_handleformat(i, s, &args);
-				i = i + 2;
+			i = i + 2;
 		}
 		else
 		{
