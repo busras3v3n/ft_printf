@@ -6,12 +6,11 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:05:41 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/09 14:10:03 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:14:17 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
-#include <unistd.h>
 #include <stdarg.h>
 #include "ft_printf.h"
 
@@ -22,7 +21,9 @@ static int	ft_handleformat(int i, const char *s, va_list *args)
 
 	c = i + 1;
 	count = 0;
-	if (s[c] == 'c' || s[c] == '%')
+	if(s[c] == '%')
+		count += ft_print_percent();
+	else if (s[c] == 'c')
 		count += ft_print_char(va_arg(*args, int));
 	else if (s[c] == 's')
 		count += ft_print_str(va_arg(*args, char *));
@@ -31,27 +32,10 @@ static int	ft_handleformat(int i, const char *s, va_list *args)
 	else if (s[c] == 'u')
 		count += ft_print_unbr(va_arg(*args, unsigned int), 1);
 	else if (s[c] == 'x' || s[c] == 'X')
-		count += ft_print_hex(va_arg(*args, int), s[c]);
-		else if (s[c] == 'p')
+		count += ft_print_hex(va_arg(*args, unsigned int), s[c]);
+	else if (s[c] == 'p')
 		count += ft_print_ptr(va_arg(*args, void *));
 	return (count);
-}
-
-static int	ft_check(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == '%')
-		{
-			if (!ft_strchr("csiduxXp%", s[i + 1]) || s[i + 1] == '\0')
-				return (1);
-		}
-		i++;
-	}
-	return (0);
 }
 
 int	ft_printf(const char *s, ...)
@@ -63,14 +47,12 @@ int	ft_printf(const char *s, ...)
 	va_start(args, s);
 	i = 0;
 	count = 0;
-	if (ft_check(s))
-		return (count);
 	while (s[i])
 	{
 		if (s[i] == '%')
 		{
 			count += ft_handleformat(i, s, &args);
-			i = i + 2;
+				i = i + 2;
 		}
 		else
 		{

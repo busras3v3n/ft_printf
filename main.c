@@ -4,6 +4,5 @@
 
 int main()
 {
-	char *s = NULL;
-	ft_printf("%s", s);
+	ft_printf("%%\n");
 }

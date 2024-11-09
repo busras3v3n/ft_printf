@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_print_percent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 12:12:14 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/09 17:14:43 by busseven         ###   ########.fr       */
+/*   Created: 2024/11/09 16:52:20 by busseven          #+#    #+#             */
+/*   Updated: 2024/11/09 17:14:30 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
+#include <unistd.h>
 
-int	ft_print_char(char c)
+int ft_print_percent(void)
 {
-	ft_putchar_fd(c, 1);
+	write(1, "%", 1);
 	return (1);
 }
+
