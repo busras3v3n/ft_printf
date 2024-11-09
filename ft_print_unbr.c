@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_unbr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/09 14:10:28 by busseven         ###   ########.fr       */
+/*   Created: 2024/11/09 13:55:12 by busseven          #+#    #+#             */
+/*   Updated: 2024/11/09 14:16:22 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <unistd.h>
 
-int	ft_printf(const char *s, ...);
-int	ft_print_char(char c);
-int	ft_print_str(char *s);
-int	ft_print_nbr(int i);
-int	ft_print_hex(int i, char s);
-int	ft_print_ptr(void *p);
-int	ft_print_unbr(unsigned int n, int fd);
+int	ft_print_unbr(unsigned int n, int fd)
+{
+	char	c;
+	int		ret;
 
-#endif
+	ret = 0;
+	if (n > 9)
+	{
+		ret += ft_print_unbr(n / 10, fd);
+		ret += ft_print_unbr(n % 10, fd);
+	}
+	else if (n <= 9)
+	{
+		c = '0' + n;
+		write(fd, &c, 1);
+		ret++;
+	}
+	return(ret);
+}

@@ -6,7 +6,7 @@
 /*   By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:05:41 by busseven          #+#    #+#             */
-/*   Updated: 2024/11/06 16:07:18 by busseven         ###   ########.fr       */
+/*   Updated: 2024/11/09 14:10:03 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_handleformat(int i, const char *s, va_list *args)
 	else if (s[c] == 'i' || s[c] == 'd')
 		count += ft_print_nbr(va_arg(*args, int));
 	else if (s[c] == 'u')
-		count += ft_print_nbr(va_arg(*args, unsigned int));
+		count += ft_print_unbr(va_arg(*args, unsigned int), 1);
 	else if (s[c] == 'x' || s[c] == 'X')
 		count += ft_print_hex(va_arg(*args, int), s[c]);
 		else if (s[c] == 'p')

@@ -5,5 +5,5 @@
 int main()
 {
 	char *s = "busra";
-	ft_printf("%p", *s);
+	printf("%p", 0);
 }
