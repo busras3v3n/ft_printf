@@ -1,6 +1,6 @@
 # ft_printf
 
-This project is an imitation of the [printf()](https://man7.org/linux/man-pages/man3/fprintf.3.html) function which is a standart library function for C.<br>
+This project is a partial imitation of the [printf()](https://man7.org/linux/man-pages/man3/fprintf.3.html) function which is a standart library function for C.<br>
 The main difference is that ft_printf doesn't do buffer management and instead prints every character one by one.<br>
 It handles these flags:
 
