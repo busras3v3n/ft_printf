@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/02/28 15:36:58 by busseven         ###   ########.fr       */
+/*   Updated: 2025/02/28 16:06:10 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct	s_flags
 	int	padding_number;
 	int	precision_place;
 	int	precision_number;
-	int	var_type;
+	char	var_type;
 	int	len;
 } t_flags;
 
