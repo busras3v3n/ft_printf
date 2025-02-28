@@ -3,15 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: busseven <busras3v3n@proton.me>            +#+  +:+       +#+         #
+#    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 10:55:22 by busseven          #+#    #+#              #
-#    Updated: 2024/11/09 17:14:07 by busseven         ###   ########.fr        #
+#    Updated: 2025/02/28 19:25:17 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC 		= ft_printf.c ft_print_char.c ft_print_str.c ft_print_nbr.c ft_print_hex.c ft_print_ptr.c ft_print_unbr.c ft_print_percent.c
+BONUS_SRC	= ./bonus/ft_printf_bonus.c
 OBJS 		= $(SRC:.c=.o)
+BONUS_OBJS	= $(BONUS_SRC:.c=.o)
 
 NAME 		= libftprintf.a
 LIBFT 		= ./libft/libft.a
@@ -26,7 +28,11 @@ $(LIBFT):
 	make -C ./libft all 
 
 %.o: %.c
-	cc -c -Wall -Wextra -Werror $< -o $@ 
+	cc -c -Wall -Wextra -Werror $< -o $@
+
+bonus:	$(BONUS_OBJS) $(OBJS)
+	cp libft/libft.a $(NAME)
+	ar -rcs $(NAME) $(BONUS_OBJS)
 
 fclean: clean
 	make -C ./libft fclean

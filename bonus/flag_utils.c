@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
+/*   flag_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/02/28 20:14:46 by busseven         ###   ########.fr       */
+/*   Created: 2025/02/28 19:44:19 by busseven          #+#    #+#             */
+/*   Updated: 2025/02/28 19:49:42 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_BONUS_H
-# define FT_PRINTF_BONUS_H
-
-#include "../ft_printf.h"
-#include <stdarg.h>
-
-typedef struct	s_flags
+void	check_precision(t_flags *flags, char *s)
 {
-	int		left_justify;
-	int		space_flag;
-	int		plus;
-	int		hash;
-	int		zero;
-	int		padding_number;
-	int		precision_number;
-	int		var_type;
-	int		count;
-	int		status; // 2=found ., 1 = found nonzero digit
-	int		i;
-	char	*valid;
-} t_flags;
-
-#endif
+	flags->i++;
+	if(s[flags->i] == '*')
+		flags->precision_number = va_arg(*args, int);
+	else
+	{
+		while(1)
+		{
+			if(is_type_flag(s[flags->i]))
+				return;
+			else if()
+		}
+	}
+}

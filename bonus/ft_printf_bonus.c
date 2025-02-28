@@ -4,65 +4,85 @@
 #include "../libft/libft.h"
 #include <stdarg.h>
 
-static int	ft_handleformat(int i, const char *s, va_list *args)
+int	is_valid_flag(char c, char *flags)
 {
-	int	c;
-	int	count;
+	int	i;
 
-	c = i + 1;
-	count = 0;
-	while(1)
+	i = 0;
+	while(flags[i])
 	{
-		if()
+		if(c == flags[i])
+			return(1);
+		i++;
 	}
+	return(0);
+}
+
+void	ft_handleflags(const char *s, va_list *args, t_flags *flags)
+{
+	while(s[flags->i])
+	{
+		if(!is_valid_flag(s[flags->i], flags->valid))
+			//error
+		else if(is_valid_flag(s[flags->i], "cspdiuxX%"))
+		{
+			//print
+			//reset flags
+			return;
+		}
+		else if(s[flags->i] == '.')
+		{
+			flags->valid = "cspdiuxX%";
+			//find precision number
+		}
+		else if(s[flags->i] != '0' && ft_isdigit(s[flags->i]))
+		{
+			flags->valid  = "cspdiuxX%.";
+			//find width number
+		}
+	}
+	//error because couldnt print anything
 }
 
 void	reset_flags(t_flags *flags)
 {
 	flags->left_justify = 0;
-	flags->space_sign = 0;
+	flags->space_flag = 0;
+	flags->plus = 0;
 	flags->hash = 0;
-	flags->padding_type = 0;
-	flags->padding_place = 0;
+	flags->zero = 0;
 	flags->padding_number = 0;
-	flags->precision_place = 0;
 	flags->precision_number = 0;
-	flags->var_type = 'n';
-	flags->len = 0;
+	flags->var_type = 0;
+	flags->valid = "cspdiuxX%0-+ #.";
 }
-int	handle_print(const char *s, va_list *args, t_flags *flags)
+void	handle_print(const char *s, va_list *args, t_flags *flags)
 {
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (s[i])
+	while (s[flags->i])
 	{
-		if (s[i] == '%')
+		if (s[flags->i] == '%')
 		{
-			count += ft_handleformat(i, s, args);
-			i = i + 2;
+			flags->i++;
+			ft_handleflags(s, args, flags);
 		}
 		else
 		{
-			ft_putchar_fd(s[i], 1);
-			count++;
-			i++;
+			ft_putchar_fd(s[flags->i], 1);
+			flags->count++;
 		}
+		flags->i++;
 	}
-	return(count);
 }
 int	ft_printf(const char *s, ...)
 {
-	int		count;
 	t_flags	*flags;
 	va_list	args;
 
 	va_start(args, s);
 	flags = ft_calloc(1, sizeof(t_flags));
+	flags->i = 0;
 	reset_flags(flags);
-	count = handle_print(s, &args, flags);
+	handle_print(s, &args, flags);
 	va_end(args);
-	return (count);
+	return (flags->count);
 }
