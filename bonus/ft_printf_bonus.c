@@ -22,26 +22,29 @@ void	ft_handleflags(const char *s, va_list *args, t_flags *flags)
 {
 	while(s[flags->i])
 	{
+		check_conflicting_flags(flags);
 		if(!is_valid_flag(s[flags->i], flags->valid))
-			//error
+			incomplete_format(flags);
 		else if(is_valid_flag(s[flags->i], "cspdiuxX%"))
 		{
-			//print
-			//reset flags
+			//print considering flags
+			reset_flags(flags);
 			return;
 		}
 		else if(s[flags->i] == '.')
 		{
 			flags->valid = "cspdiuxX%";
-			//find precision number
+			check_precision(flags, s, args);
 		}
-		else if(s[flags->i] != '0' && ft_isdigit(s[flags->i]))
+		else if(s[flags->i] != '0' && (ft_isdigit(s[flags->i]) || s[flags->i]== '*'))
 		{
 			flags->valid  = "cspdiuxX%.";
-			//find width number
+			check_width(flags, s, args);
 		}
+		else
+			check_flag(flags, s);
 	}
-	//error because couldnt print anything
+	incomplete_format(flags);
 }
 
 void	reset_flags(t_flags *flags)

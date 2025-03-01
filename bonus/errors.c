@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/01 13:27:32 by busseven         ###   ########.fr       */
+/*   Created: 2025/03/01 13:22:36 by busseven          #+#    #+#             */
+/*   Updated: 2025/03/01 13:40:45 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_BONUS_H
-# define FT_PRINTF_BONUS_H
-
-#include "../ft_printf.h"
-#include <stdarg.h>
-
-typedef struct	s_flags
+void	check_conflicting_flags(t_flags *flags)
 {
-	int		left_justify;
-	int		space_flag;
-	int		plus;
-	int		hash;
-	int		zero;
-	int		padding_number;
-	int		precision_number;
-	int		var_type;
-	int		count;
-	int		status; // 2=found ., 1 = found nonzero digit
-	int		i;
-	char	*valid;
-} t_flags;
-
-void	incomplete_format(t_flags *flags);
-#endif
+	if(flags->space_flag != 0 && flags->sign != 0)
+	{
+		write("Error\nCan't have ' ' with '+'\n", 30);
+		exit(1);
+	}
+	else if(flags->left_justify != 0 && flags->zero != 0)
+	{
+		write("Error\nCan't have '0' with '-'\n", 30);
+		exit(1);
+	}
+}
+void	incomplete_format(t_flags *flags)
+{
+	write(2, "Error\nincomplete or wrong format", 23);
+	free(flags);
+	exit(1);
+}
