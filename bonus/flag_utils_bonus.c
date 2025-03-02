@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 19:44:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 13:03:12 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 13:44:30 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	check_precision(t_flags *flags, char *s, va_list *args)
 	else if(!is_valid_flag(s[flags->i], flags->valid))
 		incomplete_format(flags);
 }	
-void	check_flag(t_flags *flags, char *s)
+void	look_for_flags(t_flags *flags, char *s)
 {
 	if(s[flags->i] == '0')
 		flags->zero = 1;

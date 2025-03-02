@@ -4,20 +4,6 @@
 #include "../libft/libft.h"
 #include <stdarg.h>
 
-int	is_in_str(char c, char *str)
-{
-	int	i;
-
-	i = 0;
-	while(str[i])
-	{
-		if(c == str[i])
-			return(1);
-		i++;
-	}
-	return(0);
-}
-
 void	ft_handleflags(const char *s, va_list *args, t_flags *flags)
 {
 	while(s[flags->i])
@@ -28,21 +14,17 @@ void	ft_handleflags(const char *s, va_list *args, t_flags *flags)
 		else if(is_in_str(s[flags->i], "cspdiuxX%"))
 		{
 			print_with_flags(s, args, flags);
-			reset_flags(flags);
 			return;
 		}
 		else if(s[flags->i] == '.')
+			found_dot(flags, s, args);
+		else if(s[flags->i] != '0')
 		{
-			flags->valid = change_string_with(flags->valid, "cspdiuxX%");
-			check_precision(flags, s, args);
-		}
-		else if(s[flags->i] != '0' && (ft_isdigit(s[flags->i]) || s[flags->i]== '*'))
-		{
-			flags->valid = change_string_with(flags->valid, "cspdiuxX%.");
-			check_width(flags, s, args);
+			if(ft_isdigit(s[flags->i]) || s[flags->i] == '*')
+				found_field_width(flags, s, args);
 		}
 		else
-			check_flag(flags, s);
+			look_for_flags(flags, s);
 	}
 	incomplete_format(flags);
 }
