@@ -6,7 +6,7 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 10:55:22 by busseven          #+#    #+#              #
-#    Updated: 2025/03/02 17:42:12 by busseven         ###   ########.fr        #
+#    Updated: 2025/03/02 19:33:06 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,10 @@ bonus: $(LIBFT) $(BONUS_OBJS) $(OBJS)
 
 fclean: clean
 	make -C ./libft fclean
-	rm -rf $(NAME)	
+	rm -rf $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 	make -C ./libft clean
 
 re: fclean all
