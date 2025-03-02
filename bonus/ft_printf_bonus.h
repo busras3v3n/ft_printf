@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 17:10:02 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:40:42 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,16 @@ int		is_in_str(char c, char *str);
 void	print_with_flags(const char *s, va_list *args, t_flags *flags);
 void	found_dot(t_flags *flags, const char *s, va_list *args);
 void	found_field_width(t_flags *flags, const char *s, va_list *args);
-void	look_for_flags(t_flags *flags, const char *s);
+void	which_flag(t_flags *flags, const char *s);
 void	reset_flags(t_flags *flags);
 void	assign_flag_str(t_flags *flags);
 void	free_flag_struct(t_flags *flags);
+void	undefined_flag_combination(t_flags *flags);
+void	plus_and_space(t_flags *flags);
+void	zero_and_dash(t_flags *flags);
+char	*change_string_with(char *before, const char *after);
+void	check_precision(t_flags *flags, const char *s, va_list *args);
+void	check_width(t_flags *flags, const char *s, va_list *args);
+void	check_type_and_flag_validity(const char *s, t_flags *flags);
 
 #endif

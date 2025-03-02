@@ -6,15 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:10:16 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 17:10:36 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:42:40 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_printf_bonus.h"
-
-#include "../libft/libft.h"
-#include <stdarg.h>
 
 void	handleflags(const char *s, va_list *args, t_flags *flags)
 {

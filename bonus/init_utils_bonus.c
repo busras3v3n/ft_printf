@@ -6,9 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:04:10 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 14:04:40 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:41:34 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf_bonus.h"
 
 void	assign_flag_str(t_flags *flags)
 {

@@ -6,12 +6,13 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 10:55:22 by busseven          #+#    #+#              #
-#    Updated: 2025/02/28 19:25:17 by busseven         ###   ########.fr        #
+#    Updated: 2025/03/02 17:42:12 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC 		= ft_printf.c ft_print_char.c ft_print_str.c ft_print_nbr.c ft_print_hex.c ft_print_ptr.c ft_print_unbr.c ft_print_percent.c
-BONUS_SRC	= ./bonus/ft_printf_bonus.c
+BONUS_SRC	= ./bonus/ft_printf_bonus.c ./bonus/checks_bonus.c ./bonus/errors_bonus.c ./bonus/flag_utils_bonus.c ./bonus/flag_utils2_bonus.c \
+			./bonus/init_utils_bonus.c ./bonus/print_bonus.c ./bonus/utils_bonus.c
 OBJS 		= $(SRC:.c=.o)
 BONUS_OBJS	= $(BONUS_SRC:.c=.o)
 
@@ -30,7 +31,7 @@ $(LIBFT):
 %.o: %.c
 	cc -c -Wall -Wextra -Werror $< -o $@
 
-bonus:	$(BONUS_OBJS) $(OBJS)
+bonus: $(LIBFT) $(BONUS_OBJS) $(OBJS)
 	cp libft/libft.a $(NAME)
 	ar -rcs $(NAME) $(BONUS_OBJS)
 

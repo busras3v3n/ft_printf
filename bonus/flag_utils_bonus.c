@@ -6,9 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 19:44:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 17:11:33 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:33:10 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf_bonus.h"
 
 void	reset_flags(t_flags *flags)
 {
@@ -28,7 +30,7 @@ void	reset_flags(t_flags *flags)
 
 void	check_width(t_flags *flags, const char *s, va_list *args)
 {
-	char	*ptr;
+	const char	*ptr;
 	char	*pre_str;
 	int		i;
 
@@ -48,13 +50,13 @@ void	check_width(t_flags *flags, const char *s, va_list *args)
 		free(pre_str);
 		flags->i = i;
 	}
-	else if (!is_valid_flag(s[flags->i], flags->valid))
+	else if (!is_in_str(s[flags->i], flags->valid))
 		incomplete_format(flags);
 }
 
 void	check_precision(t_flags *flags, const char *s, va_list *args)
 {
-	char	*ptr;
+	const char	*ptr;
 	char	*pre_str;
 	int		i;
 
@@ -76,7 +78,7 @@ void	check_precision(t_flags *flags, const char *s, va_list *args)
 		free(pre_str);
 		flags->i = i;
 	}
-	else if (!is_valid_flag(s[flags->i], flags->valid))
+	else if (!is_in_str(s[flags->i], flags->valid))
 		incomplete_format(flags);
 }
 
@@ -85,12 +87,12 @@ void	which_flag(t_flags *flags, const char *s)
 	if (s[flags->i] == '0')
 		flags->zero = 1;
 	else if (s[flags->i] == '+')
-		flags->sign = 1;
+		flags->plus = 1;
 	else if (s[flags->i] == '-')
-		flags->left_justify == 1;
+		flags->dash = 1;
 	else if (s[flags->i] == ' ')
 		flags->space = 1;
 	else if (s[flags->i] == '#')
-		flags->hash == 1;
+		flags->hash = 1;
 	flags->i++;
 }

@@ -6,9 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:35:28 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 17:13:11 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:42:47 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf_bonus.h"
 
 int	is_in_str(char c, char *str)
 {
