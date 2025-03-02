@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 19:44:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 14:12:33 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:21:52 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	reset_flags(t_flags *flags)
 	flags->valid = ft_strdup("cspdiuxX%0-+ #.");
 }
 
-void	check_width(t_flags *flags, char *s, va_list *args)
+void	check_width(t_flags *flags, const char *s, va_list *args)
 {
 	char	*ptr;
 	char	*pre_str;
@@ -52,7 +52,7 @@ void	check_width(t_flags *flags, char *s, va_list *args)
 		incomplete_format(flags);
 }
 
-void	check_precision(t_flags *flags, char *s, va_list *args)
+void	check_precision(t_flags *flags, const char *s, va_list *args)
 {
 	char	*ptr;
 	char	*pre_str;
@@ -79,7 +79,7 @@ void	check_precision(t_flags *flags, char *s, va_list *args)
 	else if(!is_valid_flag(s[flags->i], flags->valid))
 		incomplete_format(flags);
 }	
-void	look_for_flags(t_flags *flags, char *s)
+void	look_for_flags(t_flags *flags, const char *s)
 {
 	if(s[flags->i] == '0')
 		flags->zero = 1;

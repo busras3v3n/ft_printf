@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:34:53 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 14:04:34 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:22:01 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_conflicting_flags(t_flags *flags)
 		zero_and_dash(flags);
 }
 
-void check_type_and_flag_validity(char **s, t_flags *flags)
+void check_type_and_flag_validity(const char *s, t_flags *flags)
 {
 	if(!is_in_str(s[flags->i], flags->f_hash) && flags->hash != 0)
 		undefined_flag_type(flags);

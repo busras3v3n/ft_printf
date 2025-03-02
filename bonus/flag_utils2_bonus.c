@@ -6,23 +6,23 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 14:08:05 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:21:39 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	found_dot(t_flags *flags, char *s, va_arg *args)
+void	found_dot(t_flags *flags, const char *s, va_list *args)
 {
 	flags->valid = change_string_with(flags->valid, "cspdiuxX%");
 	check_precision(flags, s, args);
 }
 
-void	found_field_width(t_flags *flags, char *s, va_arg *args)
+void	found_field_width(t_flags *flags, const char *s, va_list *args)
 {
 	flags->valid = change_string_with(flags->valid, "cspdiuxX%.");
 	check_width(flags, s, args);
 }
 
-void print_with_flags(char **s, va_arg *args, t_flags *flags)
+void print_with_flags(const char **s, va_list *args, t_flags *flags)
 {
 	check_type_and_flag_validity(s, flags);
 	reset_flags(flags);

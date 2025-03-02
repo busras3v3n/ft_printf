@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 13:22:28 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:21:10 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,14 @@ typedef struct	s_flags
 } t_flags;
 
 void	incomplete_format(t_flags *flags);
+void	check_conflicting_flags(t_flags *flags);
+int		is_in_str(char c, char *str);
+void	print_with_flags(const char *s, va_list *args, t_flags *flags);
+void	found_dot(t_flags *flags, const char *s, va_list *args);
+void	found_field_width(t_flags *flags, const char *s, va_list *args);
+void	look_for_flags(t_flags *flags, const char *s);
+void	reset_flags(t_flags *flags);
+void	assign_flag_str(t_flags *flags);
+void	free_flag_struct(t_flags *flags);
+
 #endif
