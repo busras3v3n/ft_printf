@@ -6,24 +6,20 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:34:53 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 13:35:09 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 14:04:34 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	assign_flag_types(t_flags *flags)
+void	check_conflicting_flags(t_flags *flags)
 {
-	flags->f_width = ft_strdup("cspdiuxX%");
-	flags->f_dash = ft_strdup("cspdiuxX%");
-	flags->f_prec = ft_strdup("sdiuxX%");
-	flags->f_zero = ft_strdup("diuxX%");
-	flags->f_space = ft_strdup("di%");
-	flags->f_plus = ft_strdup("pdi%");
-	flags->f_hash = ft_strdup("xX%");
+	if(flags->space != 0 && flags->sign != 0)
+		plus_and_space(flags);
+	else if(flags->dash != 0 && flags->zero != 0)
+		zero_and_dash(flags);
 }
 
 void check_type_and_flag_validity(char **s, t_flags *flags)
 {
-	assign_flag_types(flags);
 	if(!is_in_str(s[flags->i], flags->f_hash) && flags->hash != 0)
 		undefined_flag_type(flags);
 	if(!is_in_str(s[flags->i], flags->f_width) && flags->pad_num != 0)

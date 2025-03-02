@@ -4,7 +4,7 @@
 #include "../libft/libft.h"
 #include <stdarg.h>
 
-void	ft_handleflags(const char *s, va_list *args, t_flags *flags)
+void	handleflags(const char *s, va_list *args, t_flags *flags)
 {
 	while(s[flags->i])
 	{
@@ -36,7 +36,7 @@ void	handle_print(const char *s, va_list *args, t_flags *flags)
 		if (s[flags->i] == '%')
 		{
 			flags->i++;
-			ft_handleflags(s, args, flags);
+			handleflags(s, args, flags);
 		}
 		else
 		{
@@ -55,6 +55,7 @@ int	ft_printf(const char *s, ...)
 	flags = ft_calloc(1, sizeof(t_flags));
 	flags->i = 0;
 	reset_flags(flags);
+	assign_flag_str(flags);
 	handle_print(s, &args, flags);
 	va_end(args);
 	return (flags->count);
