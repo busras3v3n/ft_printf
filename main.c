@@ -4,5 +4,5 @@
 int main()
 {
 	int a = 4;
-	printf("%+010d", 2);
+	printf("%.0c\n", -2);
 }

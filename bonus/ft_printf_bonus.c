@@ -4,14 +4,14 @@
 #include "../libft/libft.h"
 #include <stdarg.h>
 
-int	is_valid_flag(char c, char *flags)
+int	is_in_str(char c, char *str)
 {
 	int	i;
 
 	i = 0;
-	while(flags[i])
+	while(str[i])
 	{
-		if(c == flags[i])
+		if(c == str[i])
 			return(1);
 		i++;
 	}
@@ -23,22 +23,22 @@ void	ft_handleflags(const char *s, va_list *args, t_flags *flags)
 	while(s[flags->i])
 	{
 		check_conflicting_flags(flags);
-		if(!is_valid_flag(s[flags->i], flags->valid))
+		if(!is_in_str(s[flags->i], flags->valid))
 			incomplete_format(flags);
-		else if(is_valid_flag(s[flags->i], "cspdiuxX%"))
+		else if(is_in_str(s[flags->i], "cspdiuxX%"))
 		{
-			//print considering flags
+			print_with_flags(s, args, flags);
 			reset_flags(flags);
 			return;
 		}
 		else if(s[flags->i] == '.')
 		{
-			flags->valid = "cspdiuxX%";
+			flags->valid = change_string_with(flags->valid, "cspdiuxX%");
 			check_precision(flags, s, args);
 		}
 		else if(s[flags->i] != '0' && (ft_isdigit(s[flags->i]) || s[flags->i]== '*'))
 		{
-			flags->valid  = "cspdiuxX%.";
+			flags->valid = change_string_with(flags->valid, "cspdiuxX%.");
 			check_width(flags, s, args);
 		}
 		else
@@ -47,18 +47,6 @@ void	ft_handleflags(const char *s, va_list *args, t_flags *flags)
 	incomplete_format(flags);
 }
 
-void	reset_flags(t_flags *flags)
-{
-	flags->left_justify = 0;
-	flags->space_flag = 0;
-	flags->plus = 0;
-	flags->hash = 0;
-	flags->zero = 0;
-	flags->padding_number = 0;
-	flags->precision_number = 0;
-	flags->var_type = 0;
-	flags->valid = "cspdiuxX%0-+ #.";
-}
 void	handle_print(const char *s, va_list *args, t_flags *flags)
 {
 	while (s[flags->i])

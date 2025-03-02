@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/01 13:27:32 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 13:01:34 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,25 @@
 
 typedef struct	s_flags
 {
-	int		left_justify;
-	int		space_flag;
+	int		dash;
+	int		space;
 	int		plus;
 	int		hash;
 	int		zero;
-	int		padding_number;
-	int		precision_number;
+	int		pad_num;
+	int		precision;
 	int		var_type;
 	int		count;
-	int		status; // 2=found ., 1 = found nonzero digit
+	int		prec_stat;
 	int		i;
 	char	*valid;
+	char	*f_width;
+	char	*f_dash;
+	char	*f_prec;
+	char	*f_zero;
+	char	*f_space;
+	char	*f_plus;
+	char	*f_hash;
 } t_flags;
 
 void	incomplete_format(t_flags *flags);
