@@ -57,6 +57,7 @@ int	ft_printf(const char *s, ...)
 	reset_flags(flags);
 	assign_flag_str(flags);
 	handle_print(s, &args, flags);
+	free_flag_struct(flags);
 	va_end(args);
 	return (flags->count);
 }
