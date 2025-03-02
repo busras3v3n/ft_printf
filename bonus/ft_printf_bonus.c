@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/02 17:10:16 by busseven          #+#    #+#             */
+/*   Updated: 2025/03/02 17:10:36 by busseven         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include "ft_printf_bonus.h"
 
@@ -6,25 +18,25 @@
 
 void	handleflags(const char *s, va_list *args, t_flags *flags)
 {
-	while(s[flags->i])
+	while (s[flags->i])
 	{
 		check_conflicting_flags(flags);
-		if(!is_in_str(s[flags->i], flags->valid))
+		if (!is_in_str(s[flags->i], flags->valid))
 			incomplete_format(flags);
-		else if(is_in_str(s[flags->i], "cspdiuxX%"))
+		else if (is_in_str(s[flags->i], "cspdiuxX%"))
 		{
 			print_with_flags(s, args, flags);
-			return;
+			return ;
 		}
-		else if(s[flags->i] == '.')
+		else if (s[flags->i] == '.')
 			found_dot(flags, s, args);
-		else if(s[flags->i] != '0')
+		else if (s[flags->i] != '0')
 		{
-			if(ft_isdigit(s[flags->i]) || s[flags->i] == '*')
+			if (ft_isdigit(s[flags->i]) || s[flags->i] == '*')
 				found_field_width(flags, s, args);
 		}
 		else
-			look_for_flags(flags, s);
+			which_flag(flags, s);
 	}
 	incomplete_format(flags);
 }
@@ -46,6 +58,7 @@ void	handle_print(const char *s, va_list *args, t_flags *flags)
 		flags->i++;
 	}
 }
+
 int	ft_printf(const char *s, ...)
 {
 	t_flags	*flags;

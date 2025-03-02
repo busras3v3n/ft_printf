@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:35:28 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 14:19:04 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:13:11 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,21 @@ int	is_in_str(char c, char *str)
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
-		if(c == str[i])
-			return(1);
+		if (c == str[i])
+			return (1);
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
 char	*change_string_with(char *before, const char *after)
 {
 	free(before);
-	return(ft_strdup(after));
+	return (ft_strdup(after));
 }
+
 void	free_flag_struct(t_flags *flags)
 {
 	free(flags->valid);
@@ -41,4 +42,3 @@ void	free_flag_struct(t_flags *flags)
 	free(flags->f_hash);
 	free(flags);
 }
-

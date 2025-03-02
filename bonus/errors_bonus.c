@@ -6,11 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 13:22:36 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 14:00:42 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:06:08 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	undefined_flag_type(t_flags *flags)
+void	undefined_flag_combination(t_flags *flags)
 {
 	write("Error\ninvalid flag combination\n", 30);
 	free_flag_struct(flags);

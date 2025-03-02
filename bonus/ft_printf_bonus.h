@@ -6,17 +6,17 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 14:21:10 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:10:02 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_BONUS_H
 # define FT_PRINTF_BONUS_H
 
-#include "../ft_printf.h"
-#include <stdarg.h>
+# include "../ft_printf.h"
+# include <stdarg.h>
 
-typedef struct	s_flags
+typedef struct s_flags
 {
 	int		dash;
 	int		space;
@@ -37,7 +37,7 @@ typedef struct	s_flags
 	char	*f_space;
 	char	*f_plus;
 	char	*f_hash;
-} t_flags;
+}	t_flags;
 
 void	incomplete_format(t_flags *flags);
 void	check_conflicting_flags(t_flags *flags);
