@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:04:10 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 17:41:34 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:25:15 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	assign_flag_str(t_flags *flags)
 	flags->f_prec = ft_strdup("sdiuxX%");
 	flags->f_zero = ft_strdup("diuxX%");
 	flags->f_space = ft_strdup("di%");
-	flags->f_plus = ft_strdup("pdi%");
+	flags->f_plus = ft_strdup("di%");
 	flags->f_hash = ft_strdup("xX%");
 }

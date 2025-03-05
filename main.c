@@ -5,5 +5,5 @@
 int main()
 {
 	int a = 4;
-	printf("%45%");
+	printf("%.9p", "busra");
 }
