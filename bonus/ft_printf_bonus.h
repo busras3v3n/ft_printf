@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 17:40:42 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:52:44 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ typedef struct s_flags
 	int		plus;
 	int		hash;
 	int		zero;
-	int		pad_num;
+	int		width;
 	int		precision;
-	int		var_type;
 	int		count;
 	int		prec_stat;
 	int		i;
@@ -37,7 +36,16 @@ typedef struct s_flags
 	char	*f_space;
 	char	*f_plus;
 	char	*f_hash;
+	char	type;
+	int		len;
+	int		pad_len;
 }	t_flags;
+
+typedef	struct s_argdata
+{
+	char	type;
+}	t_argdata;
+
 
 void	incomplete_format(t_flags *flags);
 void	check_conflicting_flags(t_flags *flags);

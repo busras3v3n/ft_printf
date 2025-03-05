@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 19:44:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 17:33:10 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:53:24 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_width(t_flags *flags, const char *s, va_list *args)
 
 	if (s[flags->i] == '*')
 	{
-		flags->pad_num = va_arg(*args, int);
+		flags->width = va_arg(*args, int);
 		flags->i++;
 	}
 	else if (ft_isdigit(s[flags->i]))
@@ -46,7 +46,7 @@ void	check_width(t_flags *flags, const char *s, va_list *args)
 		while (ft_isdigit(ptr[i]))
 			i++;
 		pre_str = ft_substr(s, 0, i);
-		flags->pad_num = ft_atoi(pre_str);
+		flags->width = ft_atoi(pre_str);
 		free(pre_str);
 		flags->i = i;
 	}
