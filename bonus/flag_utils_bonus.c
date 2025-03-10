@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 19:44:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 17:53:24 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:47:25 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	reset_flags(t_flags *flags)
 	flags->plus = 0;
 	flags->hash = 0;
 	flags->zero = 0;
-	flags->pad_num = 0;
+	flags->width = 0;
 	flags->precision = 0;
 	flags->prec_stat = 0;
-	flags->var_type = 0;
+	flags->type = '0';
 	if (flags->valid)
 		free(flags->valid);
 	flags->valid = ft_strdup("cspdiuxX%0-+ #.");

@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:34:53 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 16:52:30 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:46:33 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	check_type_and_flag_validity(const char *s, t_flags *flags)
 {
 	if (!is_in_str(s[flags->i], flags->f_hash) && flags->hash != 0)
 		undefined_flag_combination(flags);
-	if (!is_in_str(s[flags->i], flags->f_width) && flags->pad_num != 0)
+	if (!is_in_str(s[flags->i], flags->f_width) && flags->width != 0)
 		undefined_flag_combination(flags);
 	if (!is_in_str(s[flags->i], flags->f_dash) && flags->dash != 0)
 		undefined_flag_combination(flags);
