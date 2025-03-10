@@ -5,5 +5,5 @@
 int main()
 {
 	int a = 4;
-	printf("%-43p", &a);
+	printf("%3x", 112);
 }

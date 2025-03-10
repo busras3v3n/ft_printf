@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/10 12:45:47 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:25:30 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,14 @@ void	print_with_flags(const char *s, va_list *args, t_flags *flags)
 	}
 	check_arg_len(flags, args);
 	flags->pad_len = flags->width - flags->len;
-	if(!flags->dash)
-		print_padding(flags);
-	//print_hash()
-	//print_sign()
-	//print_space()
+	if(!flags->dash && flags->pad_len > 0)
+		flags->count += print_padding(flags);
+	if(flags->hash != 0 || flags->type == 'p')
+	//flags->count += print_hash()
+	if(flags->plus != 0 || flags->isnegative)
+	//flags->count += print_sign()
+	if(flags->space != 0)
+	//flags->count += print_space()
 	//print_value()
 	if(!flags->dash)
 		//print_padding()
