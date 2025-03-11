@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/11 17:35:03 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:40:23 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	check_arg_len(t_flags *flags, va_list *args)
 	else if(flags->type == 'x' || flags->type == 'X')
 		flags->len = get_hexlen(flags, va_arg(args_copy, int));
 	else if(flags->type == 'p')
-		flags->len = get_ptrlen(flags, va_arg(args_copy, void *));
+		flags->len = get_ptrlen(va_arg(args_copy, void *));
 	va_end(args_copy);
 }
 void	found_dot(t_flags *flags, const char *s, va_list *args)

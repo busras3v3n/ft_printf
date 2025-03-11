@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:10:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/11 11:16:26 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:39:53 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,13 @@ int	get_uintlen(t_flags *flags, unsigned int i)
 	return(total_len);
 }
 
-int	get_ptrlen(t_flags *flags, void *ptr)
+int	get_ptrlen(void *ptr)
 {
 	int	total_len;
 	
-	if (p == 0)
+	if (ptr == 0)
 		return (5);
 	total_len = 2;
 	total_len += num_len_base(16, (unsigned long long) ptr);
+	return(total_len);
 }

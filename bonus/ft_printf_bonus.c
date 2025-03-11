@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:10:16 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/11 11:37:13 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:23:30 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	handleflags(const char *s, va_list *args, t_flags *flags)
 	while (s[flags->i])
 	{
 		check_conflicting_flags(flags);
-		if (!is_in_str(s[flags->i], flags->valid))
+		if (!ft_isdigit(s[flags->i]) && !is_in_str(s[flags->i], flags->valid))
 			incomplete_format(flags);
 		else if (is_in_str(s[flags->i], "cspdiuxX%"))
 		{

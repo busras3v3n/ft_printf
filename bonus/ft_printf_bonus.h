@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/11 17:37:12 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:39:30 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		num_len_base(int base, unsigned long long i);
 int		get_intlen_and_sign(t_flags *flags, int i);
 int		get_hexlen(t_flags *flags, unsigned int i);
 int		get_uintlen(t_flags *flags, unsigned int i);
-int		get_ptrlen(t_flags *flags, void *ptr);
+int		get_ptrlen(void *ptr);
 int		print_space(t_flags *flags);
 int		print_sign(t_flags *flags);
 int		print_hash(t_flags *flags);
