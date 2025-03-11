@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 19:44:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/11 18:17:27 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:30:41 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_width(t_flags *flags, const char *s, va_list *args)
 		ptr = s + flags->i;
 		while (ft_isdigit(ptr[i]))
 			i++;
-		pre_str = ft_substr(s, 0, i);
+		pre_str = ft_substr(ptr, 0, i);
 		flags->width = ft_atoi(pre_str);
 		flags->i = i + ft_strlen(pre_str);
 		free(pre_str);
