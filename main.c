@@ -5,5 +5,6 @@
 int main()
 {
 	int a = 4;
-	printf("%3x", 112);
+	printf("%3x\n", 112);
+	ft_printf("%3x\n", 112);
 }

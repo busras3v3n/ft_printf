@@ -6,11 +6,11 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:10:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/10 18:20:40 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/11 11:16:26 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 int	num_len_base(int base, unsigned long long i)
 {
@@ -39,7 +39,7 @@ int	get_hexlen(t_flags *flags, unsigned int i)
 	return(total_len);
 }
 
-int	get_intlen(t_flags *flags, int i)
+int	get_intlen_and_sign(t_flags *flags, int i)
 {
 	int	total_len;
 
@@ -49,7 +49,10 @@ int	get_intlen(t_flags *flags, int i)
 	if(i < 0 || flags->plus != 0)
 		total_len++;
 	if(i < 0)
+	{
+		flags->isnegative = 1;
 		i = -i;
+	}
 	if(num_len_base(10, i) > flags->precision)
 		total_len += num_len_base(10, (unsigned long long) i);
 	else

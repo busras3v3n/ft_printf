@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 17:52:44 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:37:12 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_flags
 	char	type;
 	int		len;
 	int		pad_len;
+	int		isnegative;
 }	t_flags;
 
 typedef	struct s_argdata
@@ -64,5 +65,15 @@ char	*change_string_with(char *before, const char *after);
 void	check_precision(t_flags *flags, const char *s, va_list *args);
 void	check_width(t_flags *flags, const char *s, va_list *args);
 void	check_type_and_flag_validity(const char *s, t_flags *flags);
+int		num_len_base(int base, unsigned long long i);
+int		get_intlen_and_sign(t_flags *flags, int i);
+int		get_hexlen(t_flags *flags, unsigned int i);
+int		get_uintlen(t_flags *flags, unsigned int i);
+int		get_ptrlen(t_flags *flags, void *ptr);
+int		print_space(t_flags *flags);
+int		print_sign(t_flags *flags);
+int		print_hash(t_flags *flags);
+int		print_padding(t_flags *flags);
+
 
 #endif

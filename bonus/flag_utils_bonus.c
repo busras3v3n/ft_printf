@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 19:44:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/10 12:47:25 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/11 10:45:46 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	reset_flags(t_flags *flags)
 {
+	flags->isnegative = 0;
 	flags->dash = 0;
 	flags->space = 0;
 	flags->plus = 0;
