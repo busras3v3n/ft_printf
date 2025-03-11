@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/11 17:40:23 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:54:54 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	print_precision(t_flags *flags, va_list *args)
 }
 void	print_value(t_flags *flags, va_list *args)
 {
-	if(flags->pad_len > 0)
+	if(flags->precision > 0)
 		print_precision(flags, args);
 	if (flags->type == 'c')
 		flags->count += ft_print_char(va_arg(*args, int));

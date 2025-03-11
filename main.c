@@ -5,6 +5,6 @@
 int main()
 {
 	int a = 4;
-	printf("%3x\n", 112);
-	ft_printf("%3x\n", 112);
+	printf("%5.8i\n", 112);
+	ft_printf("%5.8i\n", 112);
 }
