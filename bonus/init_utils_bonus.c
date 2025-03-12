@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:04:10 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/11 18:02:25 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/12 12:04:10 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	assign_flag_str(t_flags *flags)
 {
-	flags->valid = ft_strdup("cspdiuxX%");
+	flags->valid = ft_strdup("cspdiuxX% .+-0");
 	flags->f_width = ft_strdup("cspdiuxX%");
 	flags->f_dash = ft_strdup("cspdiuxX%");
 	flags->f_prec = ft_strdup("sdiuxX%");

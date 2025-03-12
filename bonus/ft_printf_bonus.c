@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:10:16 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/11 18:23:30 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/12 12:08:20 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	handleflags(const char *s, va_list *args, t_flags *flags)
 		}
 		else if (s[flags->i] == '.')
 			found_dot(flags, s, args);
-		else if (s[flags->i] != '0')
+		else if (s[flags->i] != '0' && s[flags->i] != )
 		{
 			if (ft_isdigit(s[flags->i]) || s[flags->i] == '*')
 				found_field_width(flags, s, args);
