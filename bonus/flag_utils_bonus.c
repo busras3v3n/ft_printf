@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 19:44:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/12 17:36:10 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:44:36 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	check_precision(t_flags *flags, const char *s, va_list *args)
 			i++;
 		pre_str = ft_substr(ptr, 0, i);
 		flags->precision = ft_atoi(pre_str);
-		flags->i = i + ft_strlen(pre_str) + 2;
+		flags->i += ft_strlen(pre_str);
 		free(pre_str);
 	}
 	else if (!is_in_str(s[flags->i], flags->valid))
