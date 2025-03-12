@@ -4,7 +4,5 @@
 
 int main()
 {
-	int a = 4;
-	printf("%5.8i\n", 112);
-	ft_printf("%5.8i\n", 112);
+	ft_printf("%05.8i\n", 112);
 }
