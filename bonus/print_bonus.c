@@ -6,11 +6,19 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:47:14 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/11 17:36:54 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:59:59 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
+
+int	ft_print_nbr_absolute(int i)
+{
+	if(i < 0)
+		i = -i;
+	ft_putnbr_fd(i, 1);
+	return (num_len_base(16, (unsigned long long)i));
+}
 
 int	print_padding(t_flags *flags)
 {
