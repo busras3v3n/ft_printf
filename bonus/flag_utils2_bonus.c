@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/12 16:58:28 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:05:01 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	print_precision_int(t_flags *flags, int i)
 	
 	if(i < 0)
 		i = -i;
-	n = flags->len - num_len_base(10, (unsigned long long)i);
+	n = flags->len - num_len_base(10, (unsigned long long)i) - flags->isnegative;
 	if(flags->isnegative || flags->plus || flags->space)
 		n--;
 	count = n;
