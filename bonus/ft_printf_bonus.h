@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/13 11:14:15 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:53:53 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		print_space(t_flags *flags);
 int		print_sign(t_flags *flags);
 int		print_hash(t_flags *flags);
 int		print_padding(t_flags *flags);
-int		ft_print_nbr_absolute(int i);
+void		ft_print_nbr_absolute(t_flags *flags, int i);
 
 
 #endif

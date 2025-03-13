@@ -4,5 +4,5 @@
 
 int main()
 {
-	printf("%d" , ft_printf("%-1d", 10));
+	printf("%d" , ft_printf(" %05d ", -15));
 }

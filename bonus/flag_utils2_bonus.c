@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/13 17:32:18 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:53:13 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,29 @@ int	ft_print_str_precision(t_flags *flags, char *s)
 	else
 		return(ft_print_str(s));
 }
+void	ft_print_nbr_absolute(t_flags *flags, int n)
+{
+	char	c;
 
+	if (n == -2147483648)
+	{
+		write(1, "2147483648", 10);
+		flags->count += 10;
+	}
+	else if (n < 0)
+		ft_print_nbr_absolute(flags, -n);
+	else if (n > 9)
+	{
+		ft_print_nbr_absolute(flags, n / 10);
+		ft_print_nbr_absolute(flags, n % 10);
+	}
+	else if (n >= 0 && n <= 9)
+	{
+		c = '0' + n;
+		write(1, &c, 1);
+		flags->count++;
+	}
+}
 void	print_value(t_flags *flags, va_list *args)
 {
 	if(flags->precision > 0)
@@ -81,7 +103,7 @@ void	print_value(t_flags *flags, va_list *args)
 	else if (flags->type == 's')
 		flags->count += ft_print_str_precision(flags, va_arg(*args, char *));
 	else if (flags->type == 'i' || flags->type == 'd')
-		flags->count += ft_print_nbr(va_arg(*args, int));
+		ft_print_nbr_absolute(flags, va_arg(*args, int));
 	else if (flags->type == 'u')
 		flags->count += ft_print_unbr(va_arg(*args, unsigned int), 1);
 	else if (flags->type == 'x' || flags->type == 'X')
@@ -136,11 +158,11 @@ void	print_with_flags(const char *s, va_list *args, t_flags *flags)
 	}
 	check_arg_len(flags, args);
 	flags->pad_len = flags->width - flags->len;
+	flags->count += print_sign(flags);
 	if(!flags->dash && flags->pad_len > 0)
 		flags->count += print_padding(flags);
 	flags->count += print_space(flags);
 	flags->count += print_hash(flags);
-	flags->count += print_sign(flags);
 	print_value(flags, args);
 	if(flags->dash && flags->pad_len > 0)
 		flags->count += print_padding(flags);
