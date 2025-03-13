@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:47:14 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/13 17:06:34 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:31:53 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_print_nbr_absolute(int i)
 	if(i < 0)
 		i = -i;
 	ft_putnbr_fd(i, 1);
-	return (num_len_base(16, (unsigned long long)i));
+	return (num_len_base(10, (unsigned long long)i));
 }
 
 int	print_padding(t_flags *flags)
@@ -41,9 +41,9 @@ int	print_hash(t_flags *flags)
 	char	type;
 
 	type = flags->type;
-	if(flags->hash != 0 || type == 'p')
+	if(flags->hash != 0)
 	{
-		if((flags->hash != 0 && type == 'x') || type == 'p')
+		if((flags->hash != 0 && type == 'x'))
 			write(1, "0x", 2);
 		else if(flags->hash != 0 && type == 'X')
 			write(1, "0X", 2);
@@ -53,12 +53,9 @@ int	print_hash(t_flags *flags)
 }
 int	print_sign(t_flags *flags)
 {
-	if(flags->isnegative || flags->plus != 0)
+	if(flags->plus && !flags->isnegative)
 	{
-		if(flags->isnegative)
-			write(1, "-", 1);
-		else if(flags->plus)
-			write(1, "+", 1);
+		write(1, "+", 1);
 		return(1);
 	}
 	return(0);

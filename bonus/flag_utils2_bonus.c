@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/13 17:09:12 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:32:18 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	print_value(t_flags *flags, va_list *args)
 	else if (flags->type == 's')
 		flags->count += ft_print_str_precision(flags, va_arg(*args, char *));
 	else if (flags->type == 'i' || flags->type == 'd')
-		flags->count += ft_print_nbr_absolute(va_arg(*args, int));
+		flags->count += ft_print_nbr(va_arg(*args, int));
 	else if (flags->type == 'u')
 		flags->count += ft_print_unbr(va_arg(*args, unsigned int), 1);
 	else if (flags->type == 'x' || flags->type == 'X')
