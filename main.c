@@ -4,6 +4,5 @@
 
 int main()
 {
-	printf("%0-*.*x", 25, 3, 112);
-	ft_printf("%0-*.*x", 25, 3, 112);
+	printf("%d" , ft_printf("%-1s %-2s", "", "a"));
 }

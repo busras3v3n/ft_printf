@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/13 11:15:19 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:09:12 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,21 @@ int	print_precision_hex(t_flags *flags, unsigned int i)
 	return(count);
 }
 
-int	print_precision_int(t_flags *flags, int i)
+void	print_precision_int(t_flags *flags, int i)
 {
 	int n;
-	int	count;
 	
 	if(i < 0)
 		i = -i;
 	n = flags->len - num_len_base(10, (unsigned long long)i) - flags->isnegative;
 	if(flags->isnegative || flags->plus || flags->space)
 		n--;
-	count = n;
 	while(n > 0)
 	{
 		write(1, "0", 1);
+		flags->count++;
 		n--;
 	}
-	return(count);
 }
 void	print_precision(t_flags *flags, va_list *args)
 {
@@ -53,10 +51,27 @@ void	print_precision(t_flags *flags, va_list *args)
 
 	va_copy(args_copy, *args);
 	if(flags->type == 'i' || flags->type == 'd')
-		flags->count += print_precision_int(flags, va_arg(args_copy, int));
+		print_precision_int(flags, va_arg(args_copy, int));
 	else if(flags->type == 'x' || flags->type == 'X')
 		flags->count += print_precision_hex(flags, va_arg(args_copy, unsigned int));
 }
+int	ft_print_str_precision(t_flags *flags, char *s)
+{
+	int i = 0;
+	if(flags->prec_stat != 0)
+	{
+		while(flags->precision > 0 && s[i])
+		{
+			write(1, &s[i], 1);
+			i++;
+			flags->precision--;
+		}
+		return(i);
+	}
+	else
+		return(ft_print_str(s));
+}
+
 void	print_value(t_flags *flags, va_list *args)
 {
 	if(flags->precision > 0)
@@ -64,7 +79,7 @@ void	print_value(t_flags *flags, va_list *args)
 	if (flags->type == 'c')
 		flags->count += ft_print_char(va_arg(*args, int));
 	else if (flags->type == 's')
-		flags->count += ft_print_str(va_arg(*args, char *));
+		flags->count += ft_print_str_precision(flags, va_arg(*args, char *));
 	else if (flags->type == 'i' || flags->type == 'd')
 		flags->count += ft_print_nbr_absolute(va_arg(*args, int));
 	else if (flags->type == 'u')
@@ -74,14 +89,20 @@ void	print_value(t_flags *flags, va_list *args)
 	else if (flags->type == 'p')
 		flags->count += ft_print_ptr(va_arg(*args, void *));
 }
-
+int	get_strlen(t_flags *flags, char *str)
+{
+	if(flags->prec_stat && flags->precision < (int)ft_strlen(str))
+		return(flags->precision);
+	else
+		return(ft_strlen(str));
+}
 void	check_arg_len(t_flags *flags, va_list *args)
 {
 	va_list args_copy;
 
 	va_copy(args_copy, *args);
 	if(flags->type == 's')
-		flags->len = flags->precision;
+		flags->len = get_strlen(flags, va_arg(args_copy, char *));
 	else if(flags->type == 'i' || flags->type == 'd')
 		flags->len = get_intlen_and_sign(flags, va_arg(args_copy, int));
 	else if(flags->type == 'u')
@@ -110,6 +131,7 @@ void	print_with_flags(const char *s, va_list *args, t_flags *flags)
 	if(flags->type == '%')
 	{
 		write(1, "%", 1);
+		flags->count++;
 		return;
 	}
 	check_arg_len(flags, args);

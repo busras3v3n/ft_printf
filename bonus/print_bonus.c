@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:47:14 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/13 16:27:39 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:06:34 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ int	print_padding(t_flags *flags)
 	count = 0;
 	while(flags->pad_len > 0)
 	{
-		write(1, " ", 1);
+		if(!flags->dash && flags->zero)
+			write(1, "0", 1);
+		else
+			write(1, " ", 1);
 		count++;
 		flags->pad_len--;
 	}
