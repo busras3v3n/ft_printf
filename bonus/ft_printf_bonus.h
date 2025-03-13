@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/12 16:59:14 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/13 11:14:15 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,6 @@ typedef struct s_flags
 	int		count;
 	int		prec_stat;
 	int		i;
-	char	*valid;
-	char	*valid_flags;
-	char	*f_width;
-	char	*f_dash;
-	char	*f_prec;
-	char	*f_zero;
-	char	*f_space;
-	char	*f_plus;
-	char	*f_hash;
 	char	type;
 	int		len;
 	int		pad_len;

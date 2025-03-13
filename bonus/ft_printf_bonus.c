@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:10:16 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/12 16:51:16 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/13 11:25:44 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ void	handleflags(const char *s, va_list *args, t_flags *flags)
 {
 	while (s[flags->i])
 	{
-		check_conflicting_flags(flags);
-		if (!ft_isdigit(s[flags->i]) && !is_in_str(s[flags->i], flags->valid))
-			incomplete_format(flags);
-		else if (is_in_str(s[flags->i], "cspdiuxX%"))
+		if (is_in_str(s[flags->i], "cspdiuxX%"))
 		{
 			print_with_flags(s, args, flags);
 			return ;
@@ -34,7 +31,6 @@ void	handleflags(const char *s, va_list *args, t_flags *flags)
 		else
 			which_flag(flags, s);
 	}
-	incomplete_format(flags);
 }
 
 void	handle_print(const char *s, va_list *args, t_flags *flags)
@@ -58,15 +54,17 @@ void	handle_print(const char *s, va_list *args, t_flags *flags)
 int	ft_printf(const char *s, ...)
 {
 	t_flags	*flags;
+	int	count;
 	va_list	args;
 
 	va_start(args, s);
 	flags = ft_calloc(1, sizeof(t_flags));
 	flags->i = 0;
 	reset_flags(flags);
-	assign_flag_str(flags);
 	handle_print(s, &args, flags);
-	free_flag_struct(flags);
+	count = flags->count;
+	if(flags)
+		free(flags);
 	va_end(args);
-	return (flags->count);
+	return (count);
 }

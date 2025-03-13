@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:35:28 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/02 17:42:47 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/13 11:14:32 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,5 @@ char	*change_string_with(char *before, const char *after)
 
 void	free_flag_struct(t_flags *flags)
 {
-	free(flags->valid);
-	free(flags->f_width);
-	free(flags->f_dash);
-	free(flags->f_prec);
-	free(flags->f_zero);
-	free(flags->f_space);
-	free(flags->f_plus);
-	free(flags->f_hash);
 	free(flags);
 }

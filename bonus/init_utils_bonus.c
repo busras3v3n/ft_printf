@@ -6,20 +6,8 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 14:04:10 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/12 12:04:10 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/13 11:16:32 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
-
-void	assign_flag_str(t_flags *flags)
-{
-	flags->valid = ft_strdup("cspdiuxX% .+-0");
-	flags->f_width = ft_strdup("cspdiuxX%");
-	flags->f_dash = ft_strdup("cspdiuxX%");
-	flags->f_prec = ft_strdup("sdiuxX%");
-	flags->f_zero = ft_strdup("diuxX%");
-	flags->f_space = ft_strdup("di%");
-	flags->f_plus = ft_strdup("di%");
-	flags->f_hash = ft_strdup("xX%");
-}

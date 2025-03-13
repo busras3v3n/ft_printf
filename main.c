@@ -4,6 +4,6 @@
 
 int main()
 {
-	printf("%20.8x\n", 112);
-	ft_printf("%20.8x\n", 112);
+	printf("%-50.30x\n", 112);
+	ft_printf("%-50.30x\n", 112);
 }
