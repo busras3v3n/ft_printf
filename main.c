@@ -5,5 +5,5 @@
 
 int main()
 {
-	printf("%d" , ft_printf("%#x", 0));
+	printf("%d" , ft_printf("% s", "h"));
 }

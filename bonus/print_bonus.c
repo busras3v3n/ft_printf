@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:47:14 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/14 17:29:48 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:41:48 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	print_sign(t_flags *flags)
 }
 int	print_space(t_flags *flags)
 {
-	if(flags->space && !flags->isnegative)
+	if(flags->space && !flags->isnegative && flags->type != 's')
 	{
 		write(1, " ", 1);
 		return(1);
