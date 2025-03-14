@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/13 17:53:13 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:27:47 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	print_precision_int(t_flags *flags, int i)
 	
 	if(i < 0)
 		i = -i;
-	n = flags->len - num_len_base(10, (unsigned long long)i) - flags->isnegative;
+	n = flags->len - num_len_base(10, (unsigned long long)i);
 	if(flags->isnegative || flags->plus || flags->space)
 		n--;
 	while(n > 0)
@@ -45,6 +45,21 @@ void	print_precision_int(t_flags *flags, int i)
 		n--;
 	}
 }
+void	print_precision_uint(t_flags *flags, unsigned int i)
+{
+	int n;
+	
+	n = flags->len - num_len_base(10, (unsigned long long)i);
+	if(flags->isnegative || flags->plus || flags->space)
+		n--;
+	while(n > 0)
+	{
+		write(1, "0", 1);
+		flags->count++;
+		n--;
+	}
+}
+
 void	print_precision(t_flags *flags, va_list *args)
 {
 	va_list	args_copy;
@@ -52,6 +67,8 @@ void	print_precision(t_flags *flags, va_list *args)
 	va_copy(args_copy, *args);
 	if(flags->type == 'i' || flags->type == 'd')
 		print_precision_int(flags, va_arg(args_copy, int));
+	else if(flags->type == 'u')
+		print_precision_uint(flags, va_arg(args_copy, unsigned int));
 	else if(flags->type == 'x' || flags->type == 'X')
 		flags->count += print_precision_hex(flags, va_arg(args_copy, unsigned int));
 }
@@ -132,7 +149,7 @@ void	check_arg_len(t_flags *flags, va_list *args)
 	else if(flags->type == 'c')
 		flags->len = 1;
 	else if(flags->type == 'x' || flags->type == 'X')
-		flags->len = get_hexlen(flags, va_arg(args_copy, int));
+		flags->len = get_hexlen_and_ifzero(flags, va_arg(args_copy, int));
 	else if(flags->type == 'p')
 		flags->len = get_ptrlen(va_arg(args_copy, void *));
 	va_end(args_copy);

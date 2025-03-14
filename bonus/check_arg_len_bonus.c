@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:10:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/14 17:03:34 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:29:19 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,16 @@ int	num_len_base(int base, unsigned long long i)
 	return(len);
 }
 
-int	get_hexlen(t_flags *flags, unsigned int i)
+int	get_hexlen_and_ifzero(t_flags *flags, unsigned int i)
 {
 	int	total_len;
 
 	total_len = 0;
-	if(flags->hash != 0)
+	if(i == 0)
+		flags->iszero = 1;
+	else
+		flags->iszero = 0;
+	if(flags->hash != 0 && !flags->iszero)
 		total_len += 2;
 	if(num_len_base(16, i) > flags->precision)
 		total_len += num_len_base(16, (unsigned long long) i);

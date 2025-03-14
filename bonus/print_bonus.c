@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:47:14 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/13 17:55:09 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:29:48 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	print_hash(t_flags *flags)
 	char	type;
 
 	type = flags->type;
-	if(flags->hash != 0)
+	if(flags->hash != 0 && !flags->iszero)
 	{
 		if((flags->hash != 0 && type == 'x'))
 			write(1, "0x", 2);
