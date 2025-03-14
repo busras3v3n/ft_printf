@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:10:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/11 17:39:53 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/14 17:03:34 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	get_intlen_and_sign(t_flags *flags, int i)
 		flags->isnegative = 1;
 		i = -i;
 	}
+	else
+		flags->isnegative = 0;
 	if(num_len_base(10, i) > flags->precision)
 		total_len += num_len_base(10, (unsigned long long) i);
 	else
