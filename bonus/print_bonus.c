@@ -1,66 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_bonus.c                                      :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/02 11:47:14 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/14 17:41:48 by busseven         ###   ########.fr       */
+/*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
+/*   Updated: 2025/03/15 16:01:50 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	print_padding(t_flags *flags)
+void	print_value(t_flags *flags, va_list *args)
 {
-	int count;
-	
-	count = 0;
-	while(flags->pad_len > 0)
-	{
-		if(!flags->dash && flags->zero)
-			write(1, "0", 1);
-		else
-			write(1, " ", 1);
-		count++;
-		flags->pad_len--;
-	}
-	return(count);
+	if(flags->precision > 0)
+		print_precision(flags, args);
+	if (flags->type == 'c')
+		flags->count += ft_print_char(va_arg(*args, int));
+	else if (flags->type == 's')
+		flags->count += ft_print_str_precision(flags, va_arg(*args, char *));
+	else if (flags->type == 'i' || flags->type == 'd')
+		ft_print_nbr_absolute(flags, va_arg(*args, int));
+	else if (flags->type == 'u')
+		flags->count += ft_print_unbr(va_arg(*args, unsigned int), 1);
+	else if (flags->type == 'x' || flags->type == 'X')
+		flags->count += ft_print_hex(va_arg(*args, unsigned int), flags->type);
+	else if (flags->type == 'p')
+		flags->count += ft_print_ptr(va_arg(*args, void *));
 }
-int	print_hash(t_flags *flags)
-{
-	char	type;
 
-	type = flags->type;
-	if(flags->hash != 0 && !flags->iszero)
-	{
-		if((flags->hash != 0 && type == 'x'))
-			write(1, "0x", 2);
-		else if(flags->hash != 0 && type == 'X')
-			write(1, "0X", 2);
-		return(2);
-	}
-	return(0);
-}
-int	print_sign(t_flags *flags)
+void	print_with_flags(const char *s, va_list *args, t_flags *flags)
 {
-	if(flags->plus || flags->isnegative)
+	flags->type = s[flags->i];
+	if(flags->type == '%')
 	{
-		if(flags->isnegative)
-			write(1, "-", 1);
-		else
-			write(1, "+", 1);
-		return(1);
+		write(1, "%", 1);
+		flags->count++;
+		return ;
 	}
-	return(0);
-}
-int	print_space(t_flags *flags)
-{
-	if(flags->space && !flags->isnegative && flags->type != 's')
-	{
-		write(1, " ", 1);
-		return(1);
-	}
-	return(0);
+	check_arg_len(flags, args);
+	flags->pad_len = flags->width - flags->len;
+	print_sign(flags);
+	if(!flags->dash && flags->pad_len > 0)
+		print_padding(flags);
+	print_space(flags);
+	print_hash(flags);
+	print_value(flags, args);
+	if(flags->dash && flags->pad_len > 0)
+		print_padding(flags);
 }

@@ -6,13 +6,13 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:10:16 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/13 11:25:44 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/15 11:37:03 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-void	handleflags(const char *s, va_list *args, t_flags *flags)
+void	handle_flags(const char *s, va_list *args, t_flags *flags)
 {
 	while (s[flags->i])
 	{
@@ -22,12 +22,9 @@ void	handleflags(const char *s, va_list *args, t_flags *flags)
 			return ;
 		}
 		else if (s[flags->i] == '.')
-			found_dot(flags, s, args);
+			check_precision(flags, s, args);
 		else if (s[flags->i] != '0' && (ft_isdigit(s[flags->i]) || s[flags->i] == '*'))
-		{
-			if (ft_isdigit(s[flags->i]) || s[flags->i] == '*')
-				found_field_width(flags, s, args);
-		}
+			check_width(flags, s, args);
 		else
 			which_flag(flags, s);
 	}
@@ -40,7 +37,7 @@ void	handle_print(const char *s, va_list *args, t_flags *flags)
 		if (s[flags->i] == '%')
 		{
 			flags->i++;
-			handleflags(s, args, flags);
+			handle_flags(s, args, flags);
 		}
 		else
 		{

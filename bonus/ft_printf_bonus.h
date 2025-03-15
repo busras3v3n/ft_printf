@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/14 17:30:06 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:12:14 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_BONUS_H
 
 # include "../ft_printf.h"
-# include <stdarg.h>
 
 typedef struct s_flags
 {
@@ -63,11 +62,14 @@ int		get_intlen_and_sign(t_flags *flags, int i);
 int		get_hexlen_and_ifzero(t_flags *flags, unsigned int i);
 int		get_uintlen(t_flags *flags, unsigned int i);
 int		get_ptrlen(void *ptr);
-int		print_space(t_flags *flags);
-int		print_sign(t_flags *flags);
-int		print_hash(t_flags *flags);
-int		print_padding(t_flags *flags);
-void		ft_print_nbr_absolute(t_flags *flags, int i);
+void	print_space(t_flags *flags);
+void	print_sign(t_flags *flags);
+void	print_hash(t_flags *flags);
+void	print_padding(t_flags *flags);
+void	ft_print_nbr_absolute(t_flags *flags, int i);
+void	print_precision(t_flags *flags, va_list *args);
+int		ft_print_str_precision(t_flags *flags, char *s);
+void	check_arg_len(t_flags *flags, va_list *args);
 
 
 #endif
