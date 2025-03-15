@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   print_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/15 16:01:50 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:36:03 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	print_with_flags(const char *s, va_list *args, t_flags *flags)
 	}
 	check_arg_len(flags, args);
 	flags->pad_len = flags->width - flags->len;
-	print_sign(flags);
 	if(!flags->dash && flags->pad_len > 0)
 		print_padding(flags);
+	print_sign(flags);
 	print_space(flags);
 	print_hash(flags);
 	print_value(flags, args);
