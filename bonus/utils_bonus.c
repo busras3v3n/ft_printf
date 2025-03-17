@@ -6,12 +6,19 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:35:28 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/17 16:01:24 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:07:10 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
+int	return_bigger(int a, int b)
+{
+	if(a > b)
+		return(a);
+	else
+		return(b);
+}
 int absolute(int i)
 {
 	if(i < 0)

@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/17 14:39:47 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:07:29 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int	ft_print_unbr(unsigned int n, int fd);
 int	ft_print_percent(void);
 int	ft_putnbr_hex_upcase_fd(unsigned int n, int fd);
 int	ft_putnbr_hex_fd(unsigned int n, int fd);
+int	return_bigger(int a, int b);
 
 #endif
