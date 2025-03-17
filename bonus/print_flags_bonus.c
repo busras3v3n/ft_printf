@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:47:14 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/17 14:56:07 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:31:53 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,25 @@ void	ft_print_nbr_absolute(t_flags *flags, int n, int first)
 	}
 }
 
+void	print_padding_before(t_flags *flags)
+{
+	while (flags->pad_len > 0)
+	{
+		if (!flags->dash && flags->zero && !flags->prec_stat)
+			write(1, "0", 1);
+		else
+			write(1, " ", 1);
+		flags->count++;
+		flags->pad_len--;
+	}
+}
+
 void	print_padding(t_flags *flags)
 {
+	if(flags->prec_stat)
+		flags->zero = 0;
+	if(flags->zero)
+		print_sign(flags);
 	while (flags->pad_len > 0)
 	{
 		if (!flags->dash && flags->zero)

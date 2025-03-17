@@ -6,12 +6,19 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:35:28 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/17 14:44:50 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:01:24 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
+int absolute(int i)
+{
+	if(i < 0)
+		return(-i);
+	else
+		return(i);
+}
 int	ft_print_hex_prec(int i, char s, t_flags *flags)
 {
 	unsigned int	u;

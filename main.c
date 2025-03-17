@@ -5,5 +5,5 @@
 
 int main()
 {
-	ft_printf("%.0d", 420000);
+	ft_printf("%-15.15d", (int)-2147483648);
 }

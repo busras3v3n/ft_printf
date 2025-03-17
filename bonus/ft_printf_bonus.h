@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/17 14:56:23 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:02:02 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int		ft_print_str_precision(t_flags *flags, char *s);
 void	check_arg_len(t_flags *flags, va_list *args);
 int		ft_print_hex_prec(int i, char s, t_flags *flags);
 int		ft_print_unbr_prec(unsigned int n, int fd, t_flags *flags);
+int		absolute(int i);
 
 
 #endif

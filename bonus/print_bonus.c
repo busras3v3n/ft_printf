@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/17 14:56:15 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:46:50 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_value(t_flags *flags, va_list *args)
 	else if (flags->type == 's')
 		flags->count += ft_print_str_precision(flags, va_arg(*args, char *));
 	else if (flags->type == 'i' || flags->type == 'd')
-		ft_print_nbr_absolute(flags, va_arg(*args, int), 0);
+		ft_print_nbr_absolute(flags, va_arg(*args, int), 1);
 	else if (flags->type == 'u')
 		flags->count += ft_print_unbr_prec(va_arg(*args, unsigned int), 1, flags);
 	else if (flags->type == 'x' || flags->type == 'X')
@@ -41,9 +41,10 @@ void	print_with_flags(const char *s, va_list *args, t_flags *flags)
 	}
 	check_arg_len(flags, args);
 	flags->pad_len = flags->width - flags->len;
-	if(!flags->dash && flags->pad_len > 0)
+	if(!flags->dash)
 		print_padding(flags);
-	print_sign(flags);
+	if(!flags->zero)
+		print_sign(flags);
 	print_space(flags);
 	print_hash(flags);
 	print_value(flags, args);
