@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 19:44:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/13 11:15:46 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:09:41 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	reset_flags(t_flags *flags)
 	flags->width = 0;
 	flags->precision = 0;
 	flags->prec_stat = 0;
+	flags->len = 0;
 	flags->type = '0';
 }
 

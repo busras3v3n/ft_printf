@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:37:43 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/15 16:07:24 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:43:45 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	print_precision_hex(t_flags *flags, unsigned int i)
 	int n;
 	int	count;
 
+	if(flags->prec_stat != 0 && flags->precision == 0 && !i)
+		return 0;
 	n = flags->len - num_len_base(16, (unsigned long long)i);
 	if(flags->hash)
 		n -= 2;
@@ -33,8 +35,8 @@ void	print_precision_int(t_flags *flags, int i)
 {
 	int n;
 	
-	if(i < 0)
-		i = -i;
+	if(flags->prec_stat != 0 && flags->precision == 0 && !i)
+		return ;
 	n = flags->len - num_len_base(10, (unsigned long long)i);
 	if(flags->isnegative || flags->plus || flags->space)
 		n--;
@@ -50,6 +52,8 @@ void	print_precision_uint(t_flags *flags, unsigned int i)
 {
 	int n;
 	
+	if(flags->prec_stat != 0 && flags->precision == 0 && !i)
+		return ;
 	n = flags->len - num_len_base(10, (unsigned long long)i);
 	if(flags->isnegative || flags->plus || flags->space)
 		n--;
@@ -64,7 +68,10 @@ void	print_precision_uint(t_flags *flags, unsigned int i)
 int	ft_print_str_precision(t_flags *flags, char *s)
 {
 	int i = 0;
-	if(flags->prec_stat != 0)
+	
+	if(flags->prec_stat != 0 && flags->precision < 6 && !s)
+		return 0;
+	if(flags->prec_stat != 0 && s)
 	{
 		while(flags->precision > 0 && s[i])
 		{

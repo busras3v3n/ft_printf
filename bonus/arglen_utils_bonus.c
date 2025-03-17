@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arg_len_bonus.c                              :+:      :+:    :+:   */
+/*   arglen_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:10:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/14 17:29:19 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:01:59 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	get_hexlen_and_ifzero(t_flags *flags, unsigned int i)
 {
 	int	total_len;
 
+	if(flags->prec_stat != 0 && flags->precision == 0 && !i)
+		return 0;
 	total_len = 0;
 	if(i == 0)
 		flags->iszero = 1;
@@ -48,6 +50,8 @@ int	get_intlen_and_sign(t_flags *flags, int i)
 	int	total_len;
 
 	total_len = 0;
+	if(flags->prec_stat != 0 && flags->precision == 0 && !i)
+		return 0;
 	if(flags->space != 0)
 		total_len++;
 	if(i < 0 || flags->plus != 0)
@@ -55,6 +59,8 @@ int	get_intlen_and_sign(t_flags *flags, int i)
 	if(i < 0)
 	{
 		flags->isnegative = 1;
+		if(i == -2147483648)
+			return(11);
 		i = -i;
 	}
 	else
@@ -70,6 +76,8 @@ int	get_uintlen(t_flags *flags, unsigned int i)
 {
 	int	total_len;
 
+	if(flags->prec_stat != 0 && flags->precision == 0 && !i)
+		return 0;
 	total_len = 0;
 	if(num_len_base(10, i) > flags->precision)
 		total_len += num_len_base(10, (unsigned long long) i);

@@ -6,13 +6,13 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 09:41:52 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/05 17:03:40 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:39:40 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-static int	ft_putnbr_hex_fd(unsigned int n, int fd)
+int	ft_putnbr_hex_fd(unsigned int n, int fd)
 {
 	char	*base;
 	int		count;
@@ -32,7 +32,7 @@ static int	ft_putnbr_hex_fd(unsigned int n, int fd)
 	return (count);
 }
 
-static int	ft_putnbr_hex_upcase_fd(unsigned int n, int fd)
+int	ft_putnbr_hex_upcase_fd(unsigned int n, int fd)
 {
 	char	*base;
 	int		count;
@@ -57,6 +57,7 @@ int	ft_print_hex(int i, char s)
 	unsigned int	u;
 
 	u = (unsigned int)i;
+
 	if (s == 'x')
 		return (ft_putnbr_hex_fd(u, 1));
 	if (s == 'X')

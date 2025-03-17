@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/15 16:36:03 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:56:15 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	print_value(t_flags *flags, va_list *args)
 {
-	if(flags->precision > 0)
+	if(flags->prec_stat)
 		print_precision(flags, args);
 	if (flags->type == 'c')
 		flags->count += ft_print_char(va_arg(*args, int));
 	else if (flags->type == 's')
 		flags->count += ft_print_str_precision(flags, va_arg(*args, char *));
 	else if (flags->type == 'i' || flags->type == 'd')
-		ft_print_nbr_absolute(flags, va_arg(*args, int));
+		ft_print_nbr_absolute(flags, va_arg(*args, int), 0);
 	else if (flags->type == 'u')
-		flags->count += ft_print_unbr(va_arg(*args, unsigned int), 1);
+		flags->count += ft_print_unbr_prec(va_arg(*args, unsigned int), 1, flags);
 	else if (flags->type == 'x' || flags->type == 'X')
-		flags->count += ft_print_hex(va_arg(*args, unsigned int), flags->type);
+		flags->count += ft_print_hex_prec(va_arg(*args, unsigned int), flags->type, flags);
 	else if (flags->type == 'p')
 		flags->count += ft_print_ptr(va_arg(*args, void *));
 }

@@ -6,27 +6,29 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 11:47:14 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/15 16:02:02 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:56:07 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-void	ft_print_nbr_absolute(t_flags *flags, int n)
+void	ft_print_nbr_absolute(t_flags *flags, int n, int first)
 {
 	char	c;
 
+	if(flags->prec_stat != 0 && flags->precision == 0 && !n && first)
+		return ;
 	if (n == -2147483648)
 	{
 		write(1, "2147483648", 10);
 		flags->count += 10;
 	}
 	else if (n < 0)
-		ft_print_nbr_absolute(flags, -n);
+		ft_print_nbr_absolute(flags, -n, 0);
 	else if (n > 9)
 	{
-		ft_print_nbr_absolute(flags, n / 10);
-		ft_print_nbr_absolute(flags, n % 10);
+		ft_print_nbr_absolute(flags, n / 10, 0);
+		ft_print_nbr_absolute(flags, n % 10, 0);
 	}
 	else if (n >= 0 && n <= 9)
 	{

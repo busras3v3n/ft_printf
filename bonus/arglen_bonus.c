@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 15:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/15 16:00:20 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:24:38 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	get_strlen(t_flags *flags, char *str)
 {
-	if(flags->prec_stat && flags->precision < (int)ft_strlen(str))
+	if(!str)
+		return(6);
+	else if(flags->prec_stat && flags->precision < (int)ft_strlen(str))
 		return(flags->precision);
 	else
 		return(ft_strlen(str));

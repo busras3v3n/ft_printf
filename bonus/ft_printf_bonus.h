@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/15 16:12:14 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:56:23 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,12 @@ void	print_space(t_flags *flags);
 void	print_sign(t_flags *flags);
 void	print_hash(t_flags *flags);
 void	print_padding(t_flags *flags);
-void	ft_print_nbr_absolute(t_flags *flags, int i);
+void	ft_print_nbr_absolute(t_flags *flags, int i, int first);
 void	print_precision(t_flags *flags, va_list *args);
 int		ft_print_str_precision(t_flags *flags, char *s);
 void	check_arg_len(t_flags *flags, va_list *args);
+int		ft_print_hex_prec(int i, char s, t_flags *flags);
+int		ft_print_unbr_prec(unsigned int n, int fd, t_flags *flags);
 
 
 #endif

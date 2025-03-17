@@ -5,5 +5,5 @@
 
 int main()
 {
-	printf("%d" , ft_printf("%20d", -42000));
+	ft_printf("%.0d", 420000);
 }

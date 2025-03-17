@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:10:16 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/15 11:37:03 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:12:48 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	handle_print(const char *s, va_list *args, t_flags *flags)
 		{
 			flags->i++;
 			handle_flags(s, args, flags);
+			reset_flags(flags);
 		}
 		else
 		{
