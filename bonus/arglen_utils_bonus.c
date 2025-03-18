@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:10:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/17 16:05:14 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/18 09:51:46 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,87 +17,57 @@ int	num_len_base(int base, unsigned long long i)
 	int len;
 
 	len = 1;
-	while(i / base != 0)
+	while (i / base != 0)
 	{
 		i = i / base;
 		len++;
 	}
-	return(len);
+	return (len);
 }
 
-int	get_hexlen_and_ifzero(t_flags *flags, unsigned int i)
+void	get_hexlen_and_ifzero(t_flags *flags, unsigned int i)
 {
-	int	total_len;
-
 	if(flags->prec_stat != 0 && flags->precision == 0 && !i)
 		return 0;
-	total_len = 0;
 	if(i == 0)
 		flags->iszero = 1;
 	else
 		flags->iszero = 0;
-	if(flags->hash != 0 && !flags->iszero)
-		total_len += 2;
-	if(num_len_base(16, i) > flags->precision)
-		total_len += num_len_base(16, (unsigned long long) i);
-	else
-		total_len += flags->precision;
-	return(total_len);
+	if (flags->hash != 0 && !flags->iszero)
+		flags->len += 2;
+	flags->len += bigger(num_len_base(16, i), flags->precision);
 }
 
-int	get_intlen_and_sign(t_flags *flags, int i)
+void	get_intlen_and_sign(t_flags *flags, int i)
 {
-	int	total_len;
-
-	total_len = 0;
-	if(flags->prec_stat != 0 && flags->precision == 0 && !i)
+	if (flags->prec_stat != 0 && flags->precision == 0 && !i)
 		return 0;
-	if(flags->space != 0)
-		total_len++;
-	if(i < 0 || flags->plus != 0)
-		total_len++;
-	if(i < 0)
-	{
+	if (flags->space != 0)
+		flags->len++;
+	if (i < 0 || flags->plus != 0)
+		flags->len++;
+	if (i < 0)
 		flags->isnegative = 1;
-		if(i == -2147483648)
-		{
-			if(flags->precision + 1 > 11)
-				return(flags->precision + 1);
-			else
-				return(11);
-		}
-		i = -i;
-	}
 	else
 		flags->isnegative = 0;
-	if(num_len_base(10, i) > flags->precision)
-		total_len += num_len_base(10, (unsigned long long)absolute(i));
+	if (i == -2147483648)
+		flags->len += 10;
 	else
-		total_len += flags->precision;
-	return(total_len);
+		flags->len += num_len_base(10, absolute(i));
 }
 
-int	get_uintlen(t_flags *flags, unsigned int i)
+void	get_uintlen(t_flags *flags, unsigned int i)
 {
-	int	total_len;
-
-	if(flags->prec_stat != 0 && flags->precision == 0 && !i)
-		return 0;
-	total_len = 0;
-	if(num_len_base(10, i) > flags->precision)
-		total_len += num_len_base(10, (unsigned long long) i);
+	if (flags->prec_stat != 0 && flags->precision == 0 && !i)
+		flags->len = 0;
 	else
-		total_len += flags->precision;
-	return(total_len);
+		flags->len = bigger(num_len_base(10, i), flags->precision);
 }
 
-int	get_ptrlen(void *ptr)
+void	get_ptrlen(void *ptr)
 {
-	int	total_len;
-	
 	if (ptr == 0)
-		return (5);
-	total_len = 2;
-	total_len += num_len_base(16, (unsigned long long) ptr);
-	return(total_len);
+		flags->len = 5;
+	else
+		flags->len = 2 + num_len_base(16, (unsigned long long) ptr);
 }

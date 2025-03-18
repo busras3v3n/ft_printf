@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_precision_bonus.c                            :+:      :+:    :+:   */
+/*   print_precision2_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/15 11:37:43 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/17 15:48:08 by busseven         ###   ########.fr       */
+/*   Created: 2025/03/18 09:55:43 by busseven          #+#    #+#             */
+/*   Updated: 2025/03/18 09:58:58 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
+
 
 int	print_precision_hex(t_flags *flags, unsigned int i)
 {
@@ -74,27 +75,6 @@ void	print_precision_uint(t_flags *flags, unsigned int i)
 		n--;
 	}
 }
-
-int	ft_print_str_precision(t_flags *flags, char *s)
-{
-	int i = 0;
-	
-	if(flags->prec_stat != 0 && flags->precision < 6 && !s)
-		return 0;
-	if(flags->prec_stat != 0 && s)
-	{
-		while(flags->precision > 0 && s[i])
-		{
-			write(1, &s[i], 1);
-			i++;
-			flags->precision--;
-		}
-		return(i);
-	}
-	else
-		return(ft_print_str(s));
-}
-
 void	print_precision(t_flags *flags, va_list *args)
 {
 	va_list	args_copy;
