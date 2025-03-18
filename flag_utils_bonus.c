@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 19:44:19 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/17 15:11:38 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:31:59 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	reset_flags(t_flags *flags)
 void	check_width(t_flags *flags, const char *s, va_list *args)
 {
 	const char	*ptr;
-	char	*pre_str;
-	int		i;
+	char		*pre_str;
+	int			i;
 
 	if (s[flags->i] == '*')
 	{
@@ -56,8 +56,8 @@ void	check_width(t_flags *flags, const char *s, va_list *args)
 void	check_precision(t_flags *flags, const char *s, va_list *args)
 {
 	const char	*ptr;
-	char	*pre_str;
-	int		i;
+	char		*pre_str;
+	int			i;
 
 	flags->i++;
 	flags->prec_stat = 1;

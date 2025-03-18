@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 09:41:52 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/17 14:39:40 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:21:27 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_putnbr_hex_upcase_fd(unsigned int n, int fd)
 	{
 		write(fd, &base[n], 1);
 		count++;
-	}  
+	}
 	return (count);
 }
 
@@ -57,7 +57,6 @@ int	ft_print_hex(int i, char s)
 	unsigned int	u;
 
 	u = (unsigned int)i;
-
 	if (s == 'x')
 		return (ft_putnbr_hex_fd(u, 1));
 	if (s == 'X')

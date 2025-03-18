@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:37:43 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/18 10:37:55 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:26:39 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_print_nbr_absolute(t_flags *flags, int n, int first)
 {
 	char	c;
 
-	if(flags->prec_stat != 0 && flags->precision == 0 && !n && first)
+	if (flags->prec_stat != 0 && flags->precision == 0 && !n && first)
 		return ;
 	if (n == -2147483648)
 	{
@@ -38,12 +38,12 @@ void	ft_print_nbr_absolute(t_flags *flags, int n, int first)
 	}
 }
 
-int	ft_print_hex_wprec(int i, char s, t_flags *flags)
+int	ft_print_hex_b(int i, char s, t_flags *flags)
 {
 	unsigned int	u;
 
 	u = (unsigned int)i;
-	if(flags->prec_stat != 0 && flags->precision == 0 && i == 0)
+	if (flags->prec_stat != 0 && flags->precision == 0 && i == 0)
 		return (0);
 	if (s == 'x')
 		return (ft_putnbr_hex_fd(u, 1));
@@ -53,12 +53,12 @@ int	ft_print_hex_wprec(int i, char s, t_flags *flags)
 		return (0);
 }
 
-int	ft_print_unbr_wprec(unsigned int n, int fd, t_flags *flags)
+int	ft_print_unbr_b(unsigned int n, int fd, t_flags *flags)
 {
 	char	c;
 	int		ret;
 
-	if(flags->prec_stat != 0 && flags->precision == 0 && n == 0)
+	if (flags->prec_stat != 0 && flags->precision == 0 && n == 0)
 		return (0);
 	ret = 0;
 	if (n > 9)
@@ -74,27 +74,29 @@ int	ft_print_unbr_wprec(unsigned int n, int fd, t_flags *flags)
 	}
 	return (ret);
 }
-int	ft_print_str_wprec(t_flags *flags, char *s)
+
+int	ft_print_str_b(t_flags *flags, char *s)
 {
-	int i = 0;
-	
-	if(flags->prec_stat != 0 && flags->precision < 6 && !s)
-		return 0;
-	else if(!s)
+	int	i;
+
+	i = 0;
+	if (flags->prec_stat != 0 && flags->precision < 6 && !s)
+		return (0);
+	else if (!s)
 	{
 		write(1, "(null)", 6);
 		return (6);
 	}
-	if(flags->prec_stat != 0 && s)
+	if (flags->prec_stat != 0 && s)
 	{
-		while(flags->precision > 0 && s[i])
+		while (flags->precision > 0 && s[i])
 		{
 			write(1, &s[i], 1);
 			i++;
 			flags->precision--;
 		}
-		return(i);
+		return (i);
 	}
 	else
-		return(ft_print_str(s));
+		return (ft_print_str(s));
 }

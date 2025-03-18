@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 17:10:16 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/17 14:12:48 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:25:40 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 void	handle_flags(const char *s, va_list *args, t_flags *flags)
 {
+	char	c;
+
 	while (s[flags->i])
 	{
-		if (is_in_str(s[flags->i], "cspdiuxX%"))
+		c = s[flags->i];
+		if (is_in_str(c, "cspdiuxX%"))
 		{
 			print_with_flags(s, args, flags);
 			return ;
 		}
-		else if (s[flags->i] == '.')
+		else if (c == '.')
 			check_precision(flags, s, args);
-		else if (s[flags->i] != '0' && (ft_isdigit(s[flags->i]) || s[flags->i] == '*'))
+		else if (c != '0' && (ft_isdigit(c) || c == '*'))
 			check_width(flags, s, args);
 		else
 			which_flag(flags, s);
@@ -52,7 +55,7 @@ void	handle_print(const char *s, va_list *args, t_flags *flags)
 int	ft_printf(const char *s, ...)
 {
 	t_flags	*flags;
-	int	count;
+	int		count;
 	va_list	args;
 
 	va_start(args, s);
@@ -61,7 +64,7 @@ int	ft_printf(const char *s, ...)
 	reset_flags(flags);
 	handle_print(s, &args, flags);
 	count = flags->count;
-	if(flags)
+	if (flags)
 		free(flags);
 	va_end(args);
 	return (count);

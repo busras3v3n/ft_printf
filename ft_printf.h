@@ -6,16 +6,16 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/17 16:07:29 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:21:40 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include "./libft/libft.h"
-#include <stdarg.h>
-#include <unistd.h>
+# include "./libft/libft.h"
+# include <stdarg.h>
+# include <unistd.h>
 
 int	ft_printf(const char *s, ...);
 int	ft_print_char(char c);
