@@ -6,7 +6,7 @@
 #    By: busseven <busseven@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 10:55:22 by busseven          #+#    #+#              #
-#    Updated: 2025/03/18 11:04:29 by busseven         ###   ########.fr        #
+#    Updated: 2025/03/18 11:40:54 by busseven         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ $(LIBFT):
 	make -C ./libft all 
 
 %.o: %.c
-	gcc -g -c -Wall -Wextra -Werror $< -o $@
+	cc -c -Wall -Wextra -Werror $< -o $@
 
 bonus: $(LIBFT) $(BONUS_OBJS) $(OBJS)
 	cp libft/libft.a $(NAME)
