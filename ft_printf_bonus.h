@@ -6,14 +6,14 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/17 16:02:02 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:05:32 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_BONUS_H
 # define FT_PRINTF_BONUS_H
 
-# include "../ft_printf.h"
+# include "ft_printf.h"
 
 typedef struct s_flags
 {
@@ -58,20 +58,23 @@ void	check_precision(t_flags *flags, const char *s, va_list *args);
 void	check_width(t_flags *flags, const char *s, va_list *args);
 void	check_type_and_flag_validity(const char *s, t_flags *flags);
 int		num_len_base(int base, unsigned long long i);
-int		get_intlen_and_sign(t_flags *flags, int i);
-int		get_hexlen_and_ifzero(t_flags *flags, unsigned int i);
-int		get_uintlen(t_flags *flags, unsigned int i);
-int		get_ptrlen(void *ptr);
+void		get_intlen_and_sign(t_flags *flags, int i);
+void		get_hexlen_and_ifzero(t_flags *flags, unsigned int i);
+void		get_uintlen(t_flags *flags, unsigned int i);
+void		get_ptrlen(t_flags *flags, void *ptr);
 void	print_space(t_flags *flags);
 void	print_sign(t_flags *flags);
 void	print_hash(t_flags *flags);
 void	print_padding(t_flags *flags);
 void	ft_print_nbr_absolute(t_flags *flags, int i, int first);
 void	print_precision(t_flags *flags, va_list *args);
-int		ft_print_str_precision(t_flags *flags, char *s);
+int		ft_print_str_wprec(t_flags *flags, char *s);
 void	check_arg_len(t_flags *flags, va_list *args);
-int		ft_print_hex_prec(int i, char s, t_flags *flags);
-int		ft_print_unbr_prec(unsigned int n, int fd, t_flags *flags);
+int		ft_print_hex_wprec(int i, char s, t_flags *flags);
+int		ft_print_unbr_wprec(unsigned int n, int fd, t_flags *flags);
+int		absolute(int i);
+int		smaller(int a, int b);
+int		bigger(int a, int b);
 int		absolute(int i);
 
 

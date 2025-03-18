@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:10:11 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/18 09:51:46 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:25:29 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int	num_len_base(int base, unsigned long long i)
 void	get_hexlen_and_ifzero(t_flags *flags, unsigned int i)
 {
 	if(flags->prec_stat != 0 && flags->precision == 0 && !i)
-		return 0;
+	{
+		flags->len = 0;
+		return ;
+	}
 	if(i == 0)
 		flags->iszero = 1;
 	else
@@ -40,20 +43,23 @@ void	get_hexlen_and_ifzero(t_flags *flags, unsigned int i)
 
 void	get_intlen_and_sign(t_flags *flags, int i)
 {
-	if (flags->prec_stat != 0 && flags->precision == 0 && !i)
-		return 0;
+	if(flags->prec_stat != 0 && flags->precision == 0 && !i)
+	{
+		flags->len = 0;
+		return ;
+	}
 	if (flags->space != 0)
 		flags->len++;
-	if (i < 0 || flags->plus != 0)
+	else if (i < 0 || flags->plus != 0)
 		flags->len++;
 	if (i < 0)
 		flags->isnegative = 1;
 	else
 		flags->isnegative = 0;
 	if (i == -2147483648)
-		flags->len += 10;
+		flags->len += bigger(10, flags->precision);
 	else
-		flags->len += num_len_base(10, absolute(i));
+		flags->len += bigger(num_len_base(10, absolute(i)), flags->precision);
 }
 
 void	get_uintlen(t_flags *flags, unsigned int i)
@@ -64,7 +70,7 @@ void	get_uintlen(t_flags *flags, unsigned int i)
 		flags->len = bigger(num_len_base(10, i), flags->precision);
 }
 
-void	get_ptrlen(void *ptr)
+void	get_ptrlen(t_flags *flags, void *ptr)
 {
 	if (ptr == 0)
 		flags->len = 5;

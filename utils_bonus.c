@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:35:28 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/18 09:56:14 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:55:07 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	smaller(int a, int b)
 {
-	if(a > b)
+	if(a < b)
 		return(a);
 	else
 		return(b);

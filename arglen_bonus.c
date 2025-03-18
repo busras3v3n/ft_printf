@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 15:59:47 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/18 09:54:49 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:53:51 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 
 void	get_strlen(t_flags *flags, char *str)
 {
+	if(flags->prec_stat != 0)
+	{
+		if ((flags->precision < 6 && !str) || !flags->precision)
+			flags->len = 0;
+	}
 	if(!str)
 		flags->len = 6;
-	if(flags->prec_stat)
+	else if(flags->prec_stat)
 		flags->len = smaller(flags->precision, (int)ft_strlen(str));
 	else
 		flags->len = ft_strlen(str);
@@ -38,6 +43,6 @@ void	check_arg_len(t_flags *flags, va_list *args)
 	else if(flags->type == 'x' || flags->type == 'X')
 		get_hexlen_and_ifzero(flags, va_arg(args_copy, int));
 	else if(flags->type == 'p')
-		get_ptrlen(va_arg(args_copy, void *));
+		get_ptrlen(flags, va_arg(args_copy, void *));
 	va_end(args_copy);
 }

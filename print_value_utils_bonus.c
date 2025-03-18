@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 11:37:43 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/18 10:00:20 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:37:55 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,11 @@ int	ft_print_str_wprec(t_flags *flags, char *s)
 	
 	if(flags->prec_stat != 0 && flags->precision < 6 && !s)
 		return 0;
+	else if(!s)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	if(flags->prec_stat != 0 && s)
 	{
 		while(flags->precision > 0 && s[i])

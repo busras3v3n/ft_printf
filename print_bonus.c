@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 13:41:01 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/18 10:00:10 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:13:21 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	print_value(t_flags *flags, va_list *args)
 	if (flags->type == 'c')
 		flags->count += ft_print_char(va_arg(*args, int));
 	else if (flags->type == 's')
-		flags->count += ft_print_str_precision(flags, va_arg(*args, char *));
+		flags->count += ft_print_str_wprec(flags, va_arg(*args, char *));
 	else if (flags->type == 'i' || flags->type == 'd')
 		ft_print_nbr_absolute(flags, va_arg(*args, int), 1);
 	else if (flags->type == 'u')
-		flags->count += ft_print_unbr_prec(va_arg(*args, unsigned int), 1, flags);
+		flags->count += ft_print_unbr_wprec(va_arg(*args, unsigned int), 1, flags);
 	else if (flags->type == 'x' || flags->type == 'X')
-		flags->count += ft_print_hex_prec(va_arg(*args, unsigned int), flags->type, flags);
+		flags->count += ft_print_hex_wprec(va_arg(*args, unsigned int), flags->type, flags);
 	else if (flags->type == 'p')
 		flags->count += ft_print_ptr(va_arg(*args, void *));
 }
