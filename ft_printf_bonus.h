@@ -6,7 +6,7 @@
 /*   By: busseven <busseven@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:13:48 by busseven          #+#    #+#             */
-/*   Updated: 2025/03/18 11:26:50 by busseven         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:56:20 by busseven         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ typedef struct s_flags
 	int		isnegative;
 	int		iszero;
 }	t_flags;
-
-typedef struct s_argdata
-{
-	char	type;
-}	t_argdata;
 
 void		incomplete_format(t_flags *flags);
 int			is_in_str(char c, char *str);
